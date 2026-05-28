@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gretna Fire & Rescue — District 22, Gretna, Virginia. Serving our community 24/7 since 1935.">
+  <title>Gretna Fire & Rescue | District 22</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ── */
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(13,13,13,0.96) 0%, rgba(13,13,13,0.7) 55%, rgba(13,13,13,0.4) 100%),
+        url('https://images.unsplash.com/photo-1599517699290-59a96a8a1e5b?w=1800&q=80') center/cover no-repeat;
+    }
+
+    /* Noise texture overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-red-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--red);
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: 4rem;
+    }
+
+    .hero-patch-wrap {
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s var(--ease) 0.2s forwards;
+    }
+
+    .hero-patch-img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 40px rgba(191,27,35,0.45));
+    }
+
+    .hero-label {
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) 0.35s forwards;
+    }
+
+    .hero-title {
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) 0.5s forwards;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title .line2 {
+      color: var(--red);
+      display: block;
+    }
+
+    .hero-desc {
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) 0.65s forwards;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-desc p {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--smoke);
+      font-style: italic;
+      line-height: 1.7;
+      max-width: 460px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease) 0.8s forwards;
+    }
+
+    /* STATS STRIP */
+    .stats-strip {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13,13,13,0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .stats-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 2rem 1rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* MISSION SECTION */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .mission-visual {
+      position: relative;
+    }
+
+    .mission-patch-large {
+      width: 100%;
+      max-width: 340px;
+      opacity: 0.92;
+      filter: drop-shadow(0 20px 60px rgba(191,27,35,0.3));
+    }
+
+    .mission-year-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: 0;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+    }
+
+    /* SERVICES */
+    .services-bg {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .service {
+      padding: 3rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.25s;
+    }
+
+    .service:last-child { border-right: none; }
+    .service:hover { background: rgba(255,255,255,0.03); }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .service p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* QUICK LINKS */
+    .ql-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .ql-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      min-height: 220px;
+      transition: border-color 0.25s var(--ease), transform 0.25s var(--ease), background 0.25s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ql-card:hover {
+      border-color: rgba(191,27,35,0.5);
+      transform: translateY(-5px);
+      background: var(--mid);
+    }
+
+    .ql-card-top { margin-bottom: 2rem; }
+
+    .ql-card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .ql-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .ql-card p {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .ql-card-arrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      transition: gap 0.2s;
+    }
+
+    .ql-card:hover .ql-card-arrow { gap: 14px; }
+
+    .ql-card-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--red);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ALERT BANNER */
+    .alert-banner {
+      background: var(--red);
+      padding: 0.9rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .alert-banner p {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .alert-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--white);
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07); }
+      .mission-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .mission-visual { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .service:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07); }
+      .ql-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .ql-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service:nth-child(odd) { border-right: none; }
+      .hero-patch-img { width: 90px; height: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ALERT BANNER -->
+  <div class="alert-banner">
+    <div class="alert-dot"></div>
+    <p>Emergency? Always Call 9-1-1 &nbsp;·&nbsp; Non-Emergency: (434) 000-0000</p>
+    <div class="alert-dot"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">District 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+
+    <a href="#" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="#" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-red-bar"></div>
+
+    <div class="hero-body container">
+      <div class="hero-patch-wrap">
+        <img src="images/patch.png" alt="Gretna Fire & Rescue" class="hero-patch-img">
+      </div>
+
+      <div class="hero-label">
+        <span class="label">Gretna, Virginia · District 22</span>
+      </div>
+
+      <h1 class="h1 hero-title">
+        Gretna Fire
+        <span class="line2">& Rescue</span>
+      </h1>
+
+      <div class="hero-desc">
+        <p>Faith In God. Trust In Training.<br>Serving our community around the clock since 1935.</p>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="recruitment.html" class="btn btn-red">
+          Join Our Team
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="donations.html" class="btn btn-ghost">Support Us</a>
+        <a href="standby.html" class="btn btn-ghost">Request EMS Standby</a>
+      </div>
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+      <div class="stats-inner">
+        <div class="stat">
+          <div class="stat-num">1935</div>
+          <div class="stat-label">Fire Est.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1968</div>
+          <div class="stat-label">Rescue Est.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Always Ready</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">22</div>
+          <div class="stat-label">District</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section" style="background: var(--black);">
+    <div class="container">
+      <div class="mission-grid">
+        <div>
+          <span class="label">Who We Are</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">
+            Protecting Gretna<br>
+            <span class="accent">For Over 89 Years</span>
+          </h2>
+          <div class="body-text">
+            <p>Gretna Fire & Rescue is a combination volunteer and career department serving the citizens of Gretna, Virginia and the surrounding Pittsylvania County communities.</p>
+            <p>We are built on a foundation of faith, integrity, and an unwavering commitment to training and professionalism. From structural firefighting to advanced emergency medical services, our members stand ready around the clock.</p>
+            <p>Whether you're a lifelong Gretna resident or new to our community — we're your neighbors, and we're always here when it matters most.</p>
+          </div>
+          <div style="margin-top: 2.5rem;">
+            <a href="about.html" class="btn btn-ghost-red">
+              Learn More About Us
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="mission-visual">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue patch" class="mission-patch-large">
+          <div class="mission-year-badge">Est. 1935 · District 22</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div class="services-bg">
+    <div class="container" style="padding-top: 4rem; padding-bottom: 1rem;">
+      <span class="label label-light">What We Do</span>
+    </div>
+    <div class="services-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+      <div class="service">
+        <div class="service-num">01</div>
+        <span class="service-icon">🔥</span>
+        <h3>Fire Suppression</h3>
+        <p>Structural, wildland, and vehicle fire response across District 22 and mutual aid coverage throughout Pittsylvania County.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">02</div>
+        <span class="service-icon">🚑</span>
+        <h3>Emergency Medical</h3>
+        <p>Advanced and Basic Life Support response, staffed by certified EMTs and paramedics ready to respond 24 hours a day.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">03</div>
+        <span class="service-icon">🚒</span>
+        <h3>Technical Rescue</h3>
+        <p>Vehicle extrication, confined space entry, and high-angle rescue operations for complex and life-safety emergencies.</p>
+      </div>
+      <div class="service">
+        <div class="service-num">04</div>
+        <span class="service-icon">🛡️</span>
+        <h3>Hazmat Response</h3>
+        <p>Hazardous materials identification, containment, and mitigation to protect our community and environment.</p>
+      </div>
+    </div>
+    <div style="height: 4rem;"></div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <section class="section" style="background: var(--ink);">
+    <div class="container">
+      <span class="label">Get Involved</span>
+      <h2 class="h2" style="margin-bottom: 3rem;">How Can We <span class="accent">Help You?</span></h2>
+      <div class="ql-grid">
+        <a href="recruitment.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">🧑‍🚒</span>
+            <h3>Join Our Team</h3>
+            <p>We're looking for volunteer and career members. No experience required — we'll train you.</p>
+          </div>
+          <div class="ql-card-arrow">
+            Apply Now
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        <a href="donations.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">❤️</span>
+            <h3>Make a Donation</h3>
+            <p>Your support funds equipment, training, and apparatus that help us save lives in our community.</p>
+          </div>
+          <div class="ql-card-arrow">
+            Donate
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        <a href="standby.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">🩺</span>
+            <h3>EMS Standby</h3>
+            <p>Request a medical standby unit for your event. We cover festivals, races, sporting events, and more.</p>
+          </div>
+          <div class="ql-card-arrow">
+            Request Standby
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        <a href="rental.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">🏛️</span>
+            <h3>Building Rental</h3>
+            <p>Rent our station facilities for community meetings, events, and gatherings. Affordable and available.</p>
+          </div>
+          <div class="ql-card-arrow">
+            Book a Space
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        <a href="events.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">📅</span>
+            <h3>Events & News</h3>
+            <p>Stay up to date on department news, community events, burn bans, and announcements.</p>
+          </div>
+          <div class="ql-card-arrow">
+            View Events
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        <a href="apparatus.html" class="ql-card">
+          <div class="ql-card-top">
+            <span class="ql-card-icon">🚒</span>
+            <h3>Our Apparatus</h3>
+            <p>Meet the fleet — engines, medic units, rescue, and more that keep District 22 protected.</p>
+          </div>
+          <div class="ql-card-arrow">
+            View Fleet
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and District 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4340000000">Non-Emergency: (434) 000-0000</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">123 Station Drive, Gretna VA</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · District 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
