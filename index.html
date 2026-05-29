@@ -13,21 +13,31 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--ink);
+      position: relative;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       padding-top: calc(var(--nav-h) + 3.5rem);
       padding-bottom: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/banner.png') center/cover no-repeat;
+      filter: brightness(0.28);
+      z-index: 0;
     }
 
     .hero-inner {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
+      grid-template-columns: 1fr;
+      gap: 0;
       align-items: center;
       padding-bottom: 3.5rem;
+      max-width: 700px;
     }
-
-    .hero-left {}
 
     .hero-eyebrow {
       display: inline-flex;
@@ -76,19 +86,10 @@
       flex-wrap: wrap;
     }
 
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .hero-patch {
-      width: 200px;
-      height: 200px;
-      object-fit: contain;
-      mix-blend-mode: lighten;
-      filter: drop-shadow(0 8px 32px rgba(191,27,35,0.4));
+    /* stats strip sits on top of the banner image */
+    .stats-strip {
+      position: relative;
+      z-index: 1;
     }
 
     /* ── STATS STRIP ── */
@@ -404,7 +405,6 @@
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
       .two-col { grid-template-columns: 1fr; }
       .two-col-left { padding: 3rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .two-col-right { padding: 3rem 0; }
@@ -480,6 +480,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-inner">
         <div class="hero-left">
@@ -501,9 +502,6 @@
             <a href="donations.html" class="btn btn-ghost">Support Us</a>
             <a href="standby.html" class="btn btn-ghost">EMS Standby Request</a>
           </div>
-        </div>
-        <div class="hero-right">
-          <img src="images/patch.png" alt="Gretna Fire & Rescue Patch" class="hero-patch">
         </div>
       </div>
     </div>
