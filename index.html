@@ -23,7 +23,9 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/banner.png') center/cover no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       filter: brightness(0.28);
       z-index: 0;
     }
@@ -480,7 +482,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" style="background-image: url('images/banner.png');"></div>
     <div class="container">
       <div class="hero-inner">
         <div class="hero-left">
