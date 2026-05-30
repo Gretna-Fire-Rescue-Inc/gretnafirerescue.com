@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Gretna Fire & Rescue — Our history, mission, and leadership. Serving Gretna, Virginia since 1935.">
+  <title>About | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero-title em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── QUICK STATS ── */
+    .quick-stats {
+      background: var(--charcoal);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quick-stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .qs-item {
+      padding: 1.75rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .qs-item:last-child { border-right: none; }
+
+    .qs-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .qs-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── MISSION ── */
+    .mission-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      padding: 5rem 0;
+    }
+
+    .mission-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .mission-body p + p { margin-top: 1.1rem; }
+
+    .values-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.2s;
+    }
+
+    .value-item:hover { border-color: rgba(191,27,35,0.3); }
+
+    .value-num {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--red);
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+
+    .value-item h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .value-item p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── HISTORY ── */
+    .history-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .history-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 0;
+    }
+
+    .history-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .history-block:last-child { border-bottom: none; }
+
+    .history-block.reverse { direction: rtl; }
+    .history-block.reverse > * { direction: ltr; }
+
+    .history-era {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .history-block h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .history-block p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .history-block p + p { margin-top: 1rem; }
+
+    .history-img-placeholder {
+      aspect-ratio: 4/3;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--steel);
+    }
+
+    .history-img-placeholder span {
+      font-size: 2.5rem;
+    }
+
+    .history-img-placeholder p {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    /* ── OFFICERS ── */
+    .officers-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .officers-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .officers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .officers-col {
+      padding: 3rem 3rem 3rem 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .officers-col:last-child {
+      padding: 3rem 0 3rem 3rem;
+      border-right: none;
+    }
+
+    .officers-col-title {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .officers-col-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .officer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 1rem;
+    }
+
+    .officer-row:last-child { border-bottom: none; }
+
+    .officer-rank {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 140px;
+    }
+
+    .officer-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-align: right;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .quick-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .qs-item:nth-child(2) { border-right: none; }
+      .qs-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+      .mission-grid { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 0; }
+      .history-block { grid-template-columns: 1fr; gap: 2rem; }
+      .history-block.reverse { direction: ltr; }
+      .officers-grid { grid-template-columns: 1fr; }
+      .officers-col { padding: 2rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .officers-col:last-child { padding: 2rem 0; border-bottom: none; }
+    }
+
+    @media (max-width: 600px) {
+      .quick-stats-inner { grid-template-columns: 1fr 1fr; }
+      .officer-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+      .officer-name { text-align: left; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="#" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="#" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>About</span>
+        </div>
+        <h1 class="page-hero-title">About <em>Us</em></h1>
+        <p class="page-hero-sub">Nearly nine decades of service, sacrifice, and community in Gretna, Virginia.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="quick-stats">
+    <div class="quick-stats-inner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+      <div class="qs-item">
+        <div class="qs-num">70</div>
+        <div class="qs-label">Active Volunteers</div>
+      </div>
+      <div class="qs-item">
+        <div class="qs-num">6</div>
+        <div class="qs-label">Paid EMS Staff</div>
+      </div>
+      <div class="qs-item">
+        <div class="qs-num">89</div>
+        <div class="qs-label">Years of Service</div>
+      </div>
+      <div class="qs-item">
+        <div class="qs-num">2019</div>
+        <div class="qs-label">Year of Merger</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="mission-section">
+    <div class="container">
+      <div class="mission-grid">
+        <div>
+          <span class="label">Our Mission</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">Dedicated To <span class="accent">Serving You</span></h2>
+          <div class="mission-body">
+            <p>Gretna Fire & Rescue is a combination volunteer and career department proudly serving the citizens of Gretna, Virginia and the surrounding Pittsylvania County communities.</p>
+            <p>We are built on a foundation of faith, integrity, and an unwavering commitment to training and professionalism. From structural firefighting to advanced emergency medical services, our members stand ready around the clock.</p>
+            <p>Whether you're a lifelong Gretna resident or new to our community — we're your neighbors, and we're always here when it matters most.</p>
+          </div>
+        </div>
+        <div class="values-list">
+          <div class="value-item">
+            <span class="value-num">01</span>
+            <div>
+              <h3>🙏 Faith In God</h3>
+              <p>Our motto grounds us in humility and purpose. We serve our community with gratitude, guided by the values that unite us.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">02</span>
+            <div>
+              <h3>📚 Trust In Training</h3>
+              <p>We invest constantly in our skills so that when you call, we are prepared. Excellence is the result of preparation.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">03</span>
+            <div>
+              <h3>🤝 Community First</h3>
+              <p>Gretna is our home. Our members live here, raise families here, and protect this community as neighbors — not just responders.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">04</span>
+            <div>
+              <h3>🔰 Combination Department</h3>
+              <p>We blend the dedication of career firefighters with the passion of our volunteers — a team united in mission.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="history-section">
+    <div class="container">
+      <div class="history-header">
+        <span class="label">Our Story</span>
+        <h2 class="h2">A Legacy of <span class="accent">Service</span></h2>
+      </div>
+
+      <!-- ERA 1 -->
+      <div class="history-block">
+        <div>
+          <div class="history-era">1935 – 1960s</div>
+          <h3>Founding &<br>Early Growth</h3>
+          <p>The roots of fire and emergency medical services in Gretna date back to 1935, when the Gretna Volunteer Fire Department (GVFD) was officially established under Mayor G.H. Vaden's leadership following the installation of the town's first water lines. B.E. Coffee served as the department's first chief through 1947.</p>
+          <p>Early firefighting relied on bucket brigades and hand-pulled wagons. Progress accelerated with the purchase of GVFD's first motorized truck in 1948 and a new Ford pumper in 1951. Major incidents in the 1950s highlighted the need for improved training and equipment.</p>
+        </div>
+        <div class="history-img-placeholder">
+          <span>📷</span>
+          <p>Original GVFD members & apparatus</p>
+        </div>
+      </div>
+
+      <!-- ERA 2 -->
+      <div class="history-block reverse">
+        <div>
+          <div class="history-era">1967 – 1990s</div>
+          <h3>EMS Expansion &<br>Modernization</h3>
+          <p>A new three-bay station on Shelton Street was built in 1967. In 1968, Gretna Rescue Squad, Inc. (GRS) formed to meet growing EMS needs; many GVFD members also volunteered with GRS. On January 1, 1969, GRS assumed full responsibility for ambulance services while operating from the fire station.</p>
+          <p>Throughout the 1980s and 1990s, both organizations modernized with specialized apparatus, new turnout gear, a joint low-band pager system, air compressor units, and a repeater-based radio network, supported by strong community backing and annual fundraisers.</p>
+        </div>
+        <div class="history-img-placeholder">
+          <span>📷</span>
+          <p>Gretna Rescue Squad station & ambulances</p>
+        </div>
+      </div>
+
+      <!-- ERA 3 -->
+      <div class="history-block">
+        <div>
+          <div class="history-era">1993 – Present</div>
+          <h3>Independence, New Station<br>& Merger</h3>
+          <p>In 1993, GVFD became an independent organization, separate from the Town of Gretna. A modern station opened at 122 East Gretna Road in 2004 — made possible through local donations, grant funding including a major FEMA award, and countless volunteer hours.</p>
+          <p>In 2019, GVFD and GRS fully merged to form Gretna Fire & Rescue, providing seamless fire protection and emergency medical services. Since the merger, the department has added two new fire engines and one new ambulance, maintaining an active roster of 70 volunteers and 6 paid EMS staff.</p>
+        </div>
+        <div class="history-img-placeholder">
+          <span>📷</span>
+          <p>Modern Gretna Fire & Rescue units</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OFFICERS -->
+  <div class="officers-section">
+    <div class="container">
+      <div class="officers-header">
+        <span class="label">Leadership</span>
+        <h2 class="h2">Our <span class="accent">Officers</span></h2>
+      </div>
+      <div class="officers-grid">
+
+        <!-- OPERATIONS -->
+        <div class="officers-col">
+          <div class="officers-col-title">Operations</div>
+          <div class="officer-row">
+            <span class="officer-rank">Chief</span>
+            <span class="officer-name">Ben Meeks</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Deputy Chief</span>
+            <span class="officer-name">Ryan Crews</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Deputy Chief</span>
+            <span class="officer-name">Matt Carter</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Fire Captain</span>
+            <span class="officer-name">Derek Witcher</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">EMS Captain</span>
+            <span class="officer-name">Shanon Burke</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Lieutenant</span>
+            <span class="officer-name">Amber Short</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Lieutenant</span>
+            <span class="officer-name">JD Fazzio</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Lieutenant</span>
+            <span class="officer-name">Adam Nearhood</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Lieutenant</span>
+            <span class="officer-name">Dillon Leach</span>
+          </div>
+        </div>
+
+        <!-- ADMINISTRATIVE -->
+        <div class="officers-col">
+          <div class="officers-col-title">Administrative</div>
+          <div class="officer-row">
+            <span class="officer-rank">President</span>
+            <span class="officer-name">Zach Perkins</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Vice President</span>
+            <span class="officer-name">Zachariah Barnes</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Treasurer</span>
+            <span class="officer-name">Katy Rowland</span>
+          </div>
+          <div class="officer-row">
+            <span class="officer-rank">Secretary</span>
+            <span class="officer-name">Star Holley</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4340000000">Non-Emergency: (434) 000-0000</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 East Gretna Road, Gretna VA</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
