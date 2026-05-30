@@ -26,8 +26,14 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      filter: brightness(0.28);
       z-index: 0;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
     }
 
     .hero-inner {
