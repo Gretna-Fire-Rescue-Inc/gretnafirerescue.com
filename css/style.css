@@ -30,7 +30,7 @@
   --font-body:    'Barlow', sans-serif;
   --font-serif:   'DM Serif Display', serif;
 
-  --nav-h: 68px;
+  --nav-h: 76px;
   --max-w: 1200px;
   --radius: 3px;
 
@@ -88,8 +88,8 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .nav-patch {
-  width: 42px;
-  height: 42px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
   transition: transform 0.3s var(--ease);
 }
