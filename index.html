@@ -15,16 +15,17 @@
     .hero {
       position: relative;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding-top: calc(var(--nav-h) + 3.5rem);
+      padding-top: calc(var(--nav-h) + 5rem);
       padding-bottom: 0;
       overflow: hidden;
+      min-height: 600px;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
       background-position: center;
-      background-size: cover;
+      background-size: 100% auto;
       background-repeat: no-repeat;
       z-index: 0;
     }
@@ -33,7 +34,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.6);
     }
 
     .hero-inner {
