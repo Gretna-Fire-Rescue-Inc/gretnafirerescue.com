@@ -92,7 +92,6 @@ button { cursor: pointer; font-family: inherit; }
   height: 42px;
   object-fit: contain;
   transition: transform 0.3s var(--ease);
-  mix-blend-mode: lighten;
 }
 
 .nav-brand:hover .nav-patch { transform: scale(1.06); }
