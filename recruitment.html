@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Gretna Fire & Rescue as a volunteer firefighter, EMT, or support member. Serve your community with training provided and roles for all experience levels.">
+  <title>Join Us | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .intro-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .intro-body p + p { margin-top: 1.1rem; }
+
+    .intro-cta-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+
+    .intro-cta-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-cta-box p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-cta-box .btn { width: 100%; justify-content: center; }
+
+    .contact-note {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .contact-note a {
+      color: var(--red);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-note a:hover { color: var(--white); }
+
+    /* ── ROLES ── */
+    .roles-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .roles-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .role-card {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .role-card:last-child { border-right: none; }
+
+    .role-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--charcoal);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    .role-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .role-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+
+    .role-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-body > p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      margin-bottom: 1.25rem;
+      line-height: 1.65;
+    }
+
+    .role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .role-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .role-list li::before {
+      content: '›';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .role-note {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.55;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    /* ── REQUIREMENTS & TRAINING ── */
+    .reqs-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .reqs-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .reqs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .reqs-col {
+      padding: 3rem 3rem 3rem 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .reqs-col:last-child {
+      padding: 3rem 0 3rem 3rem;
+      border-right: none;
+    }
+
+    .reqs-col-title {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reqs-col-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .reqs-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .req-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .req-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.55;
+    }
+
+    .req-list li:last-child { border-bottom: none; }
+
+    .req-list li::before {
+      content: '✓';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+    }
+
+    /* ── APPLY CTA ── */
+    .apply-section {
+      background: var(--red);
+      padding: 4rem 0;
+    }
+
+    .apply-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .apply-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .apply-inner p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .apply-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      border-color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-white:hover {
+      background: var(--off-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white svg {
+      width: 14px; height: 14px;
+      stroke: var(--red); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .roles-grid { grid-template-columns: 1fr; }
+      .role-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .role-card:last-child { border-bottom: none; }
+      .reqs-grid { grid-template-columns: 1fr; }
+      .reqs-col { padding: 2.5rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .reqs-col:last-child { border-bottom: none; }
+      .apply-inner { grid-template-columns: 1fr; }
+      .apply-buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="#" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="#" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Join Us</span>
+        </div>
+        <h1 class="page-hero-title">Answer <em>The Call</em></h1>
+        <p class="page-hero-sub">Volunteer your time. Serve your community. No experience required — we'll train you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <span class="label">Why Join GFR?</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">Make a Real <span class="accent">Difference</span></h2>
+          <div class="intro-body">
+            <p>Becoming a volunteer with Gretna Fire & Rescue is about heart, dedication, and a commitment to making a difference. Whether you're answering a fire call, providing emergency medical care, or supporting behind the scenes, every role is vital to protecting and serving our community.</p>
+            <p>Our members are your neighbors — people who live and work right here in Gretna. We provide full training at no cost, and we welcome people of all backgrounds and experience levels. If you have the drive to serve, we have a place for you.</p>
+          </div>
+        </div>
+        <div class="intro-cta-box">
+          <h3>Ready to Apply?</h3>
+          <p>Submit your membership application online and a department representative will contact you with next steps. The process is straightforward and we're here to help every step of the way.</p>
+          <a href="https://portal.gretnafirerescue.com/apply.php" target="_blank" rel="noopener" class="btn btn-red" style="width:100%; justify-content:center;">
+            Apply Now
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <p class="contact-note">Questions? Email us at <a href="mailto:recruitment@gretnafirerescue.com">recruitment@gretnafirerescue.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROLES -->
+  <div class="roles-section">
+    <div class="container">
+      <div class="roles-header">
+        <span class="label">Open Roles</span>
+        <h2 class="h2">Find Your <span class="accent">Role</span></h2>
+      </div>
+    </div>
+    <div class="roles-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+
+      <!-- FIREFIGHTER -->
+      <div class="role-card">
+        <div class="role-img-placeholder">
+          🔥
+          <span class="role-badge">Fire</span>
+        </div>
+        <div class="role-body">
+          <h3>Volunteer Firefighters</h3>
+          <p>Respond to diverse incidents as part of a disciplined team trained to handle any emergency.</p>
+          <ul class="role-list">
+            <li>Fire suppression and rescue operations</li>
+            <li>Hazardous material response</li>
+            <li>Search and rescue & disaster support</li>
+          </ul>
+          <p class="role-note">Operate under experienced company officers and established safety protocols.</p>
+        </div>
+      </div>
+
+      <!-- EMS -->
+      <div class="role-card">
+        <div class="role-img-placeholder">
+          🚑
+          <span class="role-badge">EMS</span>
+        </div>
+        <div class="role-body">
+          <h3>Volunteer EMTs</h3>
+          <p>Provide compassionate prehospital care when it matters most to patients and their families.</p>
+          <ul class="role-list">
+            <li>Emergency medical care and patient transport</li>
+            <li>Basic and advanced life support within scope</li>
+            <li>Multi-agency response and community medical standby</li>
+          </ul>
+          <p class="role-note">Certification & licensing support provided; ongoing skills training included.</p>
+        </div>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="role-card">
+        <div class="role-img-placeholder">
+          🤝
+          <span class="role-badge">Support</span>
+        </div>
+        <div class="role-body">
+          <h3>Support Members</h3>
+          <p>Keep GFR mission-ready behind the scenes — every department needs strong support.</p>
+          <ul class="role-list">
+            <li>Assist with fundraising events & community outreach</li>
+            <li>Help with logistics, equipment, and station projects</li>
+            <li>Administrative and event-day coordination</li>
+          </ul>
+          <p class="role-note">Orientation and role-specific training provided. No prior experience needed.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- REQUIREMENTS & TRAINING -->
+  <div class="reqs-section">
+    <div class="container">
+      <div class="reqs-header">
+        <span class="label">What To Expect</span>
+        <h2 class="h2">Requirements & <span class="accent">Training</span></h2>
+      </div>
+      <div class="reqs-grid">
+        <div class="reqs-col">
+          <div class="reqs-col-title">Minimum Requirements</div>
+          <ul class="req-list">
+            <li>At least 16 years of age</li>
+            <li>Valid driver's license (for Fire/EMS positions)</li>
+            <li>No prior experience required — comprehensive training provided</li>
+          </ul>
+        </div>
+        <div class="reqs-col">
+          <div class="reqs-col-title">Training & Commitment</div>
+          <ul class="req-list">
+            <li>Ongoing training ensures operational readiness and compliance with NFPA standards and state licensing requirements</li>
+            <li>Fire and EMS volunteers receive full training at no cost</li>
+            <li>Support members receive orientation and guidance tailored to their duties</li>
+            <li>Performance is evaluated for proficiency, effectiveness, and teamwork</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLY CTA -->
+  <div class="apply-section">
+    <div class="container">
+      <div class="apply-inner">
+        <div>
+          <h2>Ready to Answer the Call?</h2>
+          <p>Apply now and a department representative will contact you with additional information and next steps. We're looking for people like you — dedicated, community-minded, and ready to serve.</p>
+        </div>
+        <div class="apply-buttons">
+          <a href="https://portal.gretnafirerescue.com/apply.php" target="_blank" rel="noopener" class="btn-white">
+            Apply Now
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="mailto:recruitment@gretnafirerescue.com" class="btn-ghost-white">
+            Email Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4340000000">Non-Emergency: (434) 000-0000</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 East Gretna Road, Gretna VA</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
