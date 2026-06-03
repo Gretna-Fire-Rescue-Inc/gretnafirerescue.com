@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Events, news, and announcements from Gretna Fire & Rescue — Station 22, Gretna, Virginia.">
+  <title>Events & News | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── BURN BAN STATUS ── */
+    .burn-ban {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .burn-ban-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.75rem 0;
+    }
+
+    .burn-ban-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .burn-ban-text {
+      flex: 1;
+    }
+
+    .burn-ban-text strong {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .burn-ban-text p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .burn-ban-pill {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    /* Default: no ban active */
+    .burn-ban {
+      background: var(--charcoal);
+    }
+    .burn-ban-text strong { color: var(--ash); }
+    .burn-ban-text p { color: var(--muted); }
+    .burn-ban-pill {
+      background: rgba(255,255,255,0.06);
+      color: var(--ash);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    /* Active ban — add class="burn-ban burn-ban--active" to the div */
+    .burn-ban--active {
+      background: rgba(191,27,35,0.1);
+      border-color: rgba(191,27,35,0.3);
+    }
+    .burn-ban--active .burn-ban-text strong { color: var(--red); }
+    .burn-ban--active .burn-ban-text p { color: var(--ash); }
+    .burn-ban--active .burn-ban-pill {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section-header-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    /* ── UPCOMING EVENTS ── */
+    .events-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .event-card {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s;
+    }
+    .event-card:last-child { border-right: none; }
+    .event-card:hover { background: rgba(255,255,255,0.02); }
+
+    .event-date-block {
+      padding: 1.75rem 2rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .event-date-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .event-date-meta {
+      padding-top: 0.4rem;
+    }
+
+    .event-date-month {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ash);
+      display: block;
+    }
+
+    .event-date-year {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      display: block;
+    }
+
+    .event-body {
+      padding: 1.25rem 2rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-category {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+
+    .cat-fundraiser { background: rgba(191,27,35,0.15); color: var(--red); border: 1px solid rgba(191,27,35,0.25); }
+    .cat-community  { background: rgba(255,255,255,0.06); color: var(--ash); border: 1px solid rgba(255,255,255,0.1); }
+    .cat-training   { background: rgba(30,90,180,0.15); color: #6BA3E0; border: 1px solid rgba(30,90,180,0.25); }
+    .cat-ems        { background: rgba(10,92,145,0.15); color: #5AAFE0; border: 1px solid rgba(10,92,145,0.25); }
+
+    .event-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .event-body p {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1rem;
+    }
+
+    .event-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .event-meta-row span { font-size: 0.85rem; }
+
+    /* ── NEWS & ANNOUNCEMENTS ── */
+    .news-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .news-list {
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item:hover { background: rgba(255,255,255,0.02); }
+
+    .news-date {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+
+    .news-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .news-body p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.65;
+    }
+
+    .news-tag {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .tag-announcement { background: rgba(191,27,35,0.12); color: var(--red); border: 1px solid rgba(191,27,35,0.2); }
+    .tag-update       { background: rgba(255,255,255,0.05); color: var(--ash); border: 1px solid rgba(255,255,255,0.1); }
+    .tag-news         { background: rgba(30,90,180,0.12); color: #6BA3E0; border: 1px solid rgba(30,90,180,0.2); }
+
+    /* ── PAST EVENTS ── */
+    .past-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .past-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .past-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .past-item:nth-child(even) { border-right: none; padding-left: 2rem; }
+    .past-item:nth-child(odd) { padding-right: 2rem; }
+    .past-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .past-date-badge {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+
+    .past-date-badge-month {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+    }
+
+    .past-date-badge-day {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .past-date-badge-year {
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      font-weight: 500;
+      color: var(--muted);
+      display: block;
+    }
+
+    .past-info h4 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .past-info p {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .section-header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .events-grid { grid-template-columns: 1fr 1fr; }
+      .event-card:nth-child(2) { border-right: none; }
+      .event-card:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); border-right: none; }
+      .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .news-date { padding-top: 0; }
+      .news-tag { align-self: flex-start; }
+      .past-grid { grid-template-columns: 1fr; }
+      .past-item { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .past-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .past-item:last-child { border-bottom: none; }
+      .burn-ban-inner { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .event-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .event-card:last-child { border-bottom: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Events & News</span>
+        </div>
+        <h1 class="page-hero-title">Events <em>& News</em></h1>
+        <p class="page-hero-sub">Stay up to date on department news, community events, burn bans, and announcements.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BURN BAN STATUS -->
+  <!-- To activate a ban: change class to "burn-ban burn-ban--active" and update the text below -->
+  <div class="burn-ban">
+    <div class="container">
+      <div class="burn-ban-inner">
+        <span class="burn-ban-icon">🔥</span>
+        <div class="burn-ban-text">
+          <strong>Burn Ban Status</strong>
+          <p>There is no active burn ban in Pittsylvania County at this time. Always exercise caution and follow local ordinances when burning.</p>
+        </div>
+        <span class="burn-ban-pill">No Ban In Effect</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPCOMING EVENTS -->
+  <div class="events-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-inner">
+          <div>
+            <span class="label">What's Coming Up</span>
+            <h2 class="h2">Upcoming <span class="accent">Events</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="events-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+
+      <!-- EVENT 1 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">19</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">July</span>
+            <span class="event-date-year">2026</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-fundraiser">Fundraiser</span>
+          <h3>Annual BBQ & Fundraiser</h3>
+          <p>Join us for our annual community BBQ fundraiser. Food, fun, and family — all proceeds go directly toward department equipment and training.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕑</span> 11:00 AM – 4:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Station 22 · 122 E Gretna Rd</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 2 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">09</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">August</span>
+            <span class="event-date-year">2026</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-community">Community</span>
+          <h3>Community Blood Drive</h3>
+          <p>Partner with the Red Cross for a community blood drive hosted at Station 22. Appointments preferred — walk-ins welcome as space allows.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕙</span> 10:00 AM – 3:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Station 22 · 122 E Gretna Rd</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 3 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">04</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">October</span>
+            <span class="event-date-year">2026</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-community">Community</span>
+          <h3>Fire Prevention Open House</h3>
+          <p>Fire Prevention Month open house — free to the public. Tour the station, meet our crew, and learn about fire safety and escape planning for your home.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕙</span> 10:00 AM – 2:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Station 22 · 122 E Gretna Rd</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 4 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">18</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">October</span>
+            <span class="event-date-year">2026</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-ems">EMS</span>
+          <h3>Hands-Only CPR Class</h3>
+          <p>Free hands-only CPR training open to the public. Learn how to respond in the first minutes of a cardiac emergency — no certification required.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕕</span> 5:00 PM – 7:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Station 22 · 122 E Gretna Rd</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 5 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">06</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">December</span>
+            <span class="event-date-year">2026</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-community">Community</span>
+          <h3>Gretna Christmas Parade</h3>
+          <p>GFR will be marching in the annual Gretna Christmas Parade. Come out and support your local fire and rescue as we celebrate the season with the community.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕑</span> 2:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Downtown Gretna</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 6 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-date-num">TBD</div>
+          <div class="event-date-meta">
+            <span class="event-date-month">Coming</span>
+            <span class="event-date-year">Soon</span>
+          </div>
+        </div>
+        <div class="event-body">
+          <span class="event-category cat-training">Training</span>
+          <h3>Recruitment Info Night</h3>
+          <p>Considering joining GFR? Come to an informal information night to meet our members, ask questions, and learn what it takes to become a volunteer firefighter or EMT.</p>
+          <div class="event-meta">
+            <div class="event-meta-row"><span>🕕</span> 6:00 PM – 8:00 PM</div>
+            <div class="event-meta-row"><span>📍</span> Station 22 · 122 E Gretna Rd</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NEWS & ANNOUNCEMENTS -->
+  <div class="news-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-inner">
+          <div>
+            <span class="label">Department Updates</span>
+            <h2 class="h2">News & <span class="accent">Announcements</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="news-list">
+
+        <div class="news-item">
+          <span class="news-date">June 2026</span>
+          <div class="news-body">
+            <h3>New Medic Unit Placed in Service</h3>
+            <p>Gretna Fire & Rescue is proud to announce the delivery and commissioning of a new Type I ALS ambulance. The unit expands our front-line EMS capability and will replace an aging reserve unit. The apparatus was funded through a combination of community donations and grant awards.</p>
+          </div>
+          <span class="news-tag tag-announcement">Announcement</span>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date">May 2026</span>
+          <div class="news-body">
+            <h3>Six Members Complete Paramedic Certification</h3>
+            <p>Congratulations to six GFR members who successfully completed their National Registry Paramedic certification this spring. Their dedication to advanced training strengthens our ALS capability across both medic units and ensures the highest level of pre-hospital care for our community.</p>
+          </div>
+          <span class="news-tag tag-news">News</span>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date">April 2026</span>
+          <div class="news-body">
+            <h3>Annual Inspection Results — All Apparatus Compliant</h3>
+            <p>All GFR apparatus passed the annual state inspection with no deficiencies noted. Our maintenance team and apparatus committee work year-round to ensure every unit is operationally ready and meets NFPA and state compliance standards.</p>
+          </div>
+          <span class="news-tag tag-update">Update</span>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date">March 2026</span>
+          <div class="news-body">
+            <h3>GFR Receives Pittsylvania County Community Award</h3>
+            <p>Gretna Fire & Rescue was recognized by Pittsylvania County for outstanding community service and emergency response during 2025. The department was honored at the County Board of Supervisors meeting for its commitment to protecting lives and property throughout District 22.</p>
+          </div>
+          <span class="news-tag tag-news">News</span>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date">January 2026</span>
+          <div class="news-body">
+            <h3>2025 Annual Report: Over 800 Calls Responded</h3>
+            <p>Gretna Fire & Rescue responded to over 800 emergency calls in 2025, including fire, EMS, motor vehicle accidents, and technical rescue incidents. We thank our volunteers and career staff for their dedication and our community for their continued support.</p>
+          </div>
+          <span class="news-tag tag-announcement">Announcement</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PAST EVENTS -->
+  <div class="past-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-inner">
+          <div>
+            <span class="label">Event Archive</span>
+            <h2 class="h2">Past <span class="accent">Events</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="past-grid">
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">May</span>
+            <span class="past-date-badge-day">17</span>
+            <span class="past-date-badge-year">2026</span>
+          </div>
+          <div class="past-info">
+            <h4>Annual Awards Banquet</h4>
+            <p>Member recognition & officer installation</p>
+          </div>
+        </div>
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">Apr</span>
+            <span class="past-date-badge-day">26</span>
+            <span class="past-date-badge-year">2026</span>
+          </div>
+          <div class="past-info">
+            <h4>Community CPR Training</h4>
+            <p>Hands-only CPR for Gretna High students</p>
+          </div>
+        </div>
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">Mar</span>
+            <span class="past-date-badge-day">08</span>
+            <span class="past-date-badge-year">2026</span>
+          </div>
+          <div class="past-info">
+            <h4>Blood Drive</h4>
+            <p>Red Cross blood drive at Station 22</p>
+          </div>
+        </div>
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">Dec</span>
+            <span class="past-date-badge-day">07</span>
+            <span class="past-date-badge-year">2025</span>
+          </div>
+          <div class="past-info">
+            <h4>Christmas Parade</h4>
+            <p>Annual Gretna Christmas Parade participation</p>
+          </div>
+        </div>
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">Oct</span>
+            <span class="past-date-badge-day">05</span>
+            <span class="past-date-badge-year">2025</span>
+          </div>
+          <div class="past-info">
+            <h4>Fire Prevention Open House</h4>
+            <p>Station tours and fire safety education</p>
+          </div>
+        </div>
+
+        <div class="past-item">
+          <div class="past-date-badge">
+            <span class="past-date-badge-month">Jul</span>
+            <span class="past-date-badge-day">20</span>
+            <span class="past-date-badge-year">2025</span>
+          </div>
+          <div class="past-info">
+            <h4>Annual BBQ Fundraiser</h4>
+            <p>Community fundraiser at Station 22</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events &amp; News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
