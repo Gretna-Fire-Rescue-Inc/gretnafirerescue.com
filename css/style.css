@@ -563,6 +563,104 @@ button { cursor: pointer; font-family: inherit; }
 .mt-8 { margin-top: 4rem; }
 
 /* ============================================================
+   ALERT BANNER
+   ============================================================ */
+
+.alert-banner {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 850;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.alert-banner--warning { background: var(--red); }
+.alert-banner--watch   { background: #8C5500; }
+.alert-banner--burn    { background: #6B1A00; }
+
+.alert-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.7rem 2.5rem;
+}
+
+.alert-banner-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.alert-banner-content {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.alert-banner-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.alert-banner-msg {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-banner-more {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.2);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.alert-banner-close {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.alert-banner-close:hover {
+  background: rgba(0,0,0,0.4);
+  color: var(--white);
+}
+
+@media (max-width: 600px) {
+  .alert-banner-msg { display: none; }
+  .alert-banner-inner { padding: 0.7rem 1.5rem; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
