@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the fleet — fire engines, medic units, rescue, and support apparatus that keep Gretna Fire & Rescue Station 22 ready around the clock.">
+  <title>Apparatus | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── FLEET STATS ── */
+    .fleet-stats {
+      background: var(--charcoal);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fleet-stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .fs-item {
+      padding: 1.75rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+    .fs-item:last-child { border-right: none; }
+
+    .fs-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .fs-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FLEET OVERVIEW ── */
+    .overview-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      padding: 5rem 0;
+    }
+
+    .overview-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .overview-body p + p { margin-top: 1.1rem; }
+
+    .fleet-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.2s;
+    }
+    .summary-item:hover { border-color: rgba(191,27,35,0.3); }
+
+    .summary-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .summary-text h4 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .summary-text p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* ── CATEGORY HEADER ── */
+    .category-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── APPARATUS GRID ── */
+    .apparatus-section {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .apparatus-section.bg-ink { background: var(--ink); }
+    .apparatus-section.bg-black { background: var(--black); }
+
+    .apparatus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .apparatus-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .apparatus-card {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.2s;
+    }
+    .apparatus-card:last-child { border-right: none; }
+    .apparatus-card:hover { background: rgba(255,255,255,0.02); }
+
+    .apparatus-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--charcoal);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .apparatus-img-emoji {
+      font-size: 3rem;
+    }
+
+    .apparatus-img-unit {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .apparatus-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .badge-fire { background: var(--red); color: var(--white); }
+    .badge-ems  { background: #0A5C91; color: var(--white); }
+    .badge-support { background: var(--mid); color: var(--ash); border: 1px solid rgba(255,255,255,0.15); }
+
+    .apparatus-status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-family: var(--font-display);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 2px;
+    }
+
+    .status-front-line {
+      background: rgba(0,160,60,0.2);
+      color: #4DC87A;
+      border: 1px solid rgba(0,160,60,0.3);
+    }
+
+    .status-reserve {
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .apparatus-body {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .apparatus-designation {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .apparatus-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .apparatus-role {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .apparatus-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+    .spec-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+
+    .spec-val {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    .apparatus-cap {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .apparatus-cap li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.5;
+    }
+
+    .apparatus-cap li::before {
+      content: '›';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT CTA ── */
+    .cta-section {
+      background: var(--red);
+      padding: 4rem 0;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-inner p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      border-color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-white:hover {
+      background: var(--off-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white svg {
+      width: 14px; height: 14px;
+      stroke: var(--red); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .fleet-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .fs-item:nth-child(2) { border-right: none; }
+      .fs-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+      .overview-grid { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 0; }
+      .apparatus-grid { grid-template-columns: 1fr 1fr; }
+      .apparatus-card:nth-child(2) { border-right: none; }
+      .apparatus-card:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); border-right: none; }
+      .apparatus-grid-2 { grid-template-columns: 1fr; }
+      .apparatus-grid-2 .apparatus-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .apparatus-grid-2 .apparatus-card:last-child { border-bottom: none; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .apparatus-grid { grid-template-columns: 1fr; }
+      .apparatus-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .apparatus-card:last-child { border-bottom: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html" class="active">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Apparatus</span>
+        </div>
+        <h1 class="page-hero-title">Our <em>Fleet</em></h1>
+        <p class="page-hero-sub">The engines, medic units, and rescue apparatus that keep Station 22 ready around the clock.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLEET STATS -->
+  <div class="fleet-stats">
+    <div class="fleet-stats-inner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+      <div class="fs-item">
+        <div class="fs-num">3</div>
+        <div class="fs-label">Fire Apparatus</div>
+      </div>
+      <div class="fs-item">
+        <div class="fs-num">2</div>
+        <div class="fs-label">Medic Units</div>
+      </div>
+      <div class="fs-item">
+        <div class="fs-num">2</div>
+        <div class="fs-label">Support Units</div>
+      </div>
+      <div class="fs-item">
+        <div class="fs-num">24/7</div>
+        <div class="fs-label">Always In Service</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="overview-section">
+    <div class="container">
+      <div class="overview-grid">
+        <div>
+          <span class="label">The Fleet</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">Built to <span class="accent">Protect</span></h2>
+          <div class="overview-body">
+            <p>Gretna Fire & Rescue maintains a diverse fleet of front-line and reserve apparatus to meet the full spectrum of emergency response needs across our district. Our equipment is regularly inspected, maintained, and upgraded to ensure every unit is mission-ready at a moment's notice.</p>
+            <p>Since the 2019 merger of Gretna Volunteer Fire Department and Gretna Rescue Squad, the combined fleet has grown with the addition of two new engines and a new ambulance — ensuring we continue to meet the demands of our growing community.</p>
+            <p>All apparatus is housed at Station 22 at 122 East Gretna Road, Gretna, Virginia.</p>
+          </div>
+        </div>
+        <div class="fleet-summary">
+          <div class="summary-item">
+            <span class="summary-icon">🔥</span>
+            <div class="summary-text">
+              <h4>Fire Apparatus</h4>
+              <p>Attack engines and water supply for structural, vehicle, and wildland response</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🚑</span>
+            <div class="summary-text">
+              <h4>EMS / Medic Units</h4>
+              <p>ALS-equipped ambulances staffed by certified EMTs and paramedics</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🛠️</span>
+            <div class="summary-text">
+              <h4>Rescue & Support</h4>
+              <p>Utility and rescue units for extrication, logistics, and special operations</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <span class="summary-icon">🌲</span>
+            <div class="summary-text">
+              <h4>Wildland / Brush</h4>
+              <p>Off-road capable unit for grass, brush, and wildland-interface fires</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRE APPARATUS -->
+  <div class="apparatus-section bg-ink">
+    <div class="container">
+      <div class="category-header">
+        <span class="label">Fire Apparatus</span>
+        <h2 class="h2">Fire <span class="accent">Fleet</span></h2>
+      </div>
+    </div>
+    <div class="apparatus-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+
+      <!-- ENGINE 22 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🚒</span>
+          <span class="apparatus-img-unit">Engine 22</span>
+          <span class="apparatus-badge badge-fire">Fire</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">E-22</div>
+          <h3>Engine 22</h3>
+          <p class="apparatus-role">Primary Attack Pumper — first-due structural and vehicle fire response across the district.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Class A Pumper</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Pump</span>
+              <span class="spec-val">1,500 GPM</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">500 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Structural &amp; vehicle fire attack</li>
+            <li>Mutual aid response throughout Pittsylvania County</li>
+            <li>Wildland/interface fire capability</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ENGINE 221 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🚒</span>
+          <span class="apparatus-img-unit">Engine 221</span>
+          <span class="apparatus-badge badge-fire">Fire</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">E-221</div>
+          <h3>Engine 221</h3>
+          <p class="apparatus-role">Second-due attack pumper supporting fire operations and rural water supply.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Class A Pumper</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Pump</span>
+              <span class="spec-val">1,250 GPM</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">1,000 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Secondary attack &amp; water supply</li>
+            <li>Large-tank rural area operations</li>
+            <li>Backup front-line pumper</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TANKER 22 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🚒</span>
+          <span class="apparatus-img-unit">Tanker 22</span>
+          <span class="apparatus-badge badge-fire">Fire</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">T-22</div>
+          <h3>Tanker 22</h3>
+          <p class="apparatus-role">Water supply tender for rural and non-hydrant operations across the district.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Water Tender</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Pump</span>
+              <span class="spec-val">750 GPM</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">2,500 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Rural water supply &amp; shuttle operations</li>
+            <li>Tender operations with dump tank</li>
+            <li>Mutual aid water supply support</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMS APPARATUS -->
+  <div class="apparatus-section bg-black">
+    <div class="container">
+      <div class="category-header">
+        <span class="label">EMS Apparatus</span>
+        <h2 class="h2">Medic <span class="accent">Units</span></h2>
+      </div>
+    </div>
+    <div class="apparatus-grid-2" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+
+      <!-- MEDIC 22 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🚑</span>
+          <span class="apparatus-img-unit">Medic 22</span>
+          <span class="apparatus-badge badge-ems">EMS</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">M-22</div>
+          <h3>Medic 22</h3>
+          <p class="apparatus-role">Primary ALS ambulance staffed 24/7 by certified EMTs and paramedics for emergency medical response and patient transport.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Type I ALS Ambulance</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Level</span>
+              <span class="spec-val">Advanced Life Support</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Crew</span>
+              <span class="spec-val">EMT-B / Paramedic</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Advanced cardiac monitoring &amp; 12-lead ECG</li>
+            <li>IV/IO therapy, medication administration</li>
+            <li>Emergency medical transport to Sovah Martinsville</li>
+            <li>Cardiac arrest resuscitation &amp; airway management</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MEDIC 221 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🚑</span>
+          <span class="apparatus-img-unit">Medic 221</span>
+          <span class="apparatus-badge badge-ems">EMS</span>
+          <span class="apparatus-status status-reserve">Reserve</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">M-221</div>
+          <h3>Medic 221</h3>
+          <p class="apparatus-role">Reserve ALS ambulance available when M-22 is committed, ensuring continuous EMS coverage for the district.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Type I ALS Ambulance</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Level</span>
+              <span class="spec-val">Advanced Life Support</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Crew</span>
+              <span class="spec-val">EMT-B / Paramedic</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Full ALS capability matching primary unit</li>
+            <li>MCI &amp; multi-unit EMS response support</li>
+            <li>EMS standby events &amp; community coverage</li>
+            <li>Activated when M-22 is out of service or committed</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUPPORT & SPECIAL OPS -->
+  <div class="apparatus-section bg-ink">
+    <div class="container">
+      <div class="category-header">
+        <span class="label">Support & Special Operations</span>
+        <h2 class="h2">Support <span class="accent">Fleet</span></h2>
+      </div>
+    </div>
+    <div class="apparatus-grid-2" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+
+      <!-- RESCUE 22 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🛻</span>
+          <span class="apparatus-img-unit">Rescue 22</span>
+          <span class="apparatus-badge badge-support">Support</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">R-22</div>
+          <h3>Rescue 22</h3>
+          <p class="apparatus-role">Heavy utility and rescue vehicle carrying specialized equipment for extrication, technical rescue, and scene support operations.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Heavy Utility / Rescue</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Role</span>
+              <span class="spec-val">Technical Rescue</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Vehicle extrication with hydraulic rescue tools</li>
+            <li>Scene lighting &amp; generator support</li>
+            <li>Confined space &amp; rope rescue equipment</li>
+            <li>Command &amp; logistics support on large incidents</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BRUSH 22 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <span class="apparatus-img-emoji">🌲</span>
+          <span class="apparatus-img-unit">Brush 22</span>
+          <span class="apparatus-badge badge-support">Support</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">BR-22</div>
+          <h3>Brush 22</h3>
+          <p class="apparatus-role">4x4 off-road capable unit designed for grass, brush, and wildland-interface fire suppression across our rural district.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Brush / Wildland Unit</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Drive</span>
+              <span class="spec-val">4-Wheel Drive</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">250 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Off-road access to remote fire locations</li>
+            <li>Initial brush &amp; grass fire attack</li>
+            <li>Wildland-urban interface operations</li>
+            <li>Support to state forestry on wildland fires</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2>Help Keep Our Fleet Ready</h2>
+          <p>Maintaining and upgrading our apparatus is only possible through the generous support of our community. Donations go directly toward equipment, vehicles, and the tools our members need to protect your family.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="donations.html" class="btn-white">
+            Support Us
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="recruitment.html" class="btn-ghost-white">
+            Join Our Team
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events &amp; News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4340000000">Non-Emergency: (434) 000-0000</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 East Gretna Road, Gretna VA</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
