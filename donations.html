@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support Gretna Fire & Rescue with a donation. Your gift funds life-saving equipment, training, and community programs for Station 22 in Gretna, Virginia.">
+  <title>Donate | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── IMPACT STATS STRIP ── */
+    .impact-strip {
+      background: var(--red);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .impact-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .impact-stat {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    .impact-stat:last-child { border-right: none; }
+
+    .impact-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .impact-stat-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .intro-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .intro-body p + p { margin-top: 1.1rem; }
+
+    .tax-note {
+      margin-top: 1.75rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.65;
+    }
+
+    .tax-note strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── DONATE BOX ── */
+    .donate-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+
+    .donate-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .donate-box > p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .donate-box .btn { width: 100%; justify-content: center; }
+
+    .donate-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1.25rem 0;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .donate-divider::before,
+    .donate-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-paypal {
+      background: #0070BA;
+      color: var(--white);
+      border: none;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-paypal:hover {
+      background: #005ea6;
+      transform: translateY(-2px);
+    }
+
+    .check-instructions {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.75;
+    }
+
+    .check-instructions strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── HOW TO GIVE ── */
+    .ways-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .ways-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .ways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .way-card {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .way-card:last-child { border-right: none; }
+
+    .way-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(191,27,35,0.12);
+      border: 1px solid rgba(191,27,35,0.25);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+
+    .way-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .way-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .way-card .btn {
+      align-self: flex-start;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ── WHAT YOUR GIFT FUNDS ── */
+    .funds-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .funds-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .funds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .fund-item {
+      padding: 3rem 2.5rem 3rem 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fund-item:last-child {
+      padding-right: 0;
+      padding-left: 2.5rem;
+      border-right: none;
+    }
+
+    .fund-item:nth-child(2) {
+      padding-left: 2.5rem;
+    }
+
+    .fund-number {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .fund-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .fund-item p {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .fund-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .fund-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.5;
+    }
+
+    .fund-list li::before {
+      content: '›';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── DONATE CTA ── */
+    .cta-section {
+      background: var(--red);
+      padding: 4rem 0;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-inner p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      border-color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+
+    .btn-white svg {
+      width: 14px; height: 14px;
+      stroke: var(--red); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .impact-strip-grid { grid-template-columns: repeat(2, 1fr); }
+      .impact-stat:nth-child(2) { border-right: none; }
+      .impact-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .impact-stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ways-grid { grid-template-columns: 1fr; }
+      .way-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .way-card:last-child { border-bottom: none; }
+      .funds-grid { grid-template-columns: 1fr; }
+      .fund-item { padding: 2.5rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .fund-item:nth-child(2) { padding-left: 0; }
+      .fund-item:last-child { padding-left: 0; border-bottom: none; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .impact-strip-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html" class="active">Donate</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Donate</span>
+        </div>
+        <h1 class="page-hero-title">Support <em>Your</em> Department</h1>
+        <p class="page-hero-sub">Every dollar goes directly toward the equipment, training, and readiness that protect Gretna and the surrounding community.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT STATS STRIP -->
+  <div class="impact-strip">
+    <div class="container" style="padding: 0;">
+      <div class="impact-strip-grid">
+        <div class="impact-stat">
+          <div class="impact-stat-num">91</div>
+          <div class="impact-stat-label">Years of Service</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-stat-num">~70</div>
+          <div class="impact-stat-label">Active Volunteers</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-stat-num">24/7</div>
+          <div class="impact-stat-label">Always On Call</div>
+        </div>
+        <div class="impact-stat">
+          <div class="impact-stat-num">100%</div>
+          <div class="impact-stat-label">Community Funded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <span class="label">Why It Matters</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">Your Gift <span class="accent">Saves Lives</span></h2>
+          <div class="intro-body">
+            <p>Gretna Fire & Rescue is a combination volunteer and career department that has protected this community since 1935. We rely heavily on the generous support of residents and businesses in our district to maintain the equipment and training that keeps our crews ready to respond.</p>
+            <p>Unlike larger city departments, our funding does not come from a dedicated tax base. Donations from the community we serve are essential to bridging the gap between what government funding provides and what it truly takes to protect lives and property in Pittsylvania County.</p>
+            <p>Your contribution — in any amount — directly supports the men and women who answer the call when your family needs help most.</p>
+          </div>
+          <div class="tax-note">
+            <strong>Tax Deductible</strong>
+            Gretna Fire & Rescue is a recognized 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent permitted by law. Please retain your receipt for tax purposes.
+          </div>
+        </div>
+        <div class="donate-box">
+          <h3>Donate Online</h3>
+          <p>Make a secure one-time or recurring gift using PayPal. No account required — all major cards accepted.</p>
+          <a href="https://www.paypal.com/donate?hosted_button_id=XXXXXXXXXX" target="_blank" rel="noopener" class="btn btn-red">
+            Donate Now
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <div class="donate-divider">or pay by check</div>
+          <div class="check-instructions">
+            <strong>Make Checks Payable To</strong>
+            Gretna Fire &amp; Rescue<br>
+            122 East Gretna Road<br>
+            Gretna, VA 24557
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAYS TO GIVE -->
+  <div class="ways-section">
+    <div class="container">
+      <div class="ways-header">
+        <span class="label">Other Ways to Help</span>
+        <h2 class="h2">More Ways to <span class="accent">Give</span></h2>
+      </div>
+    </div>
+    <div class="ways-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+
+      <div class="way-card">
+        <div class="way-icon">🛒</div>
+        <h3>Amazon Wish List</h3>
+        <p>Browse our department wish list and purchase equipment or supplies we need directly. Items ship straight to the station — no cash required.</p>
+        <a href="https://www.amazon.com/hz/wishlist/ls/XXXXXXXXXX" target="_blank" rel="noopener" class="btn-outline">
+          View Wish List
+          <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">🏢</div>
+        <h3>Corporate &amp; Business Giving</h3>
+        <p>Local businesses play a vital role in sustaining our department. Sponsorships and corporate gifts provide sustained support and recognize your business as a community partner.</p>
+        <a href="mailto:info@gretnafirerescue.com?subject=Corporate Donation Inquiry" class="btn-outline">
+          Get in Touch
+        </a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">🎗️</div>
+        <h3>Memorial &amp; Tribute Gifts</h3>
+        <p>Honor a loved one or recognize a special occasion with a donation in their name. We can acknowledge memorial gifts and provide a letter of recognition upon request.</p>
+        <a href="mailto:info@gretnafirerescue.com?subject=Memorial Gift" class="btn-outline">
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHAT YOUR GIFT FUNDS -->
+  <div class="funds-section">
+    <div class="container">
+      <div class="funds-header">
+        <span class="label">Where It Goes</span>
+        <h2 class="h2">What Your <span class="accent">Gift Funds</span></h2>
+      </div>
+      <div class="funds-grid">
+
+        <div class="fund-item">
+          <div class="fund-number">01</div>
+          <h3>Life-Saving Equipment</h3>
+          <p>Modern firefighting and EMS gear is expensive and must be regularly replaced to meet safety standards. Your donation keeps our crews equipped and protected.</p>
+          <ul class="fund-list">
+            <li>Turnout gear and self-contained breathing apparatus</li>
+            <li>AEDs, stretchers, and advanced airway equipment</li>
+            <li>Hoses, nozzles, and suppression tools</li>
+            <li>Vehicle maintenance and fleet readiness</li>
+          </ul>
+        </div>
+
+        <div class="fund-item">
+          <div class="fund-number">02</div>
+          <h3>Training &amp; Certification</h3>
+          <p>Well-trained responders save lives. Donations fund the ongoing education that keeps our volunteers and career staff current with the latest protocols and certifications.</p>
+          <ul class="fund-list">
+            <li>Firefighter I &amp; II certification courses</li>
+            <li>EMT and advanced EMS training programs</li>
+            <li>Continuing education and skills refreshers</li>
+            <li>State and national certification fees</li>
+          </ul>
+        </div>
+
+        <div class="fund-item">
+          <div class="fund-number">03</div>
+          <h3>Community Programs</h3>
+          <p>Prevention and education are just as important as response. We invest in programs that make our community safer every day.</p>
+          <ul class="fund-list">
+            <li>Fire prevention and public education outreach</li>
+            <li>Smoke detector installation for residents in need</li>
+            <li>School and youth safety programs</li>
+            <li>Community events and open houses</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DONATE CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2>Make Your Gift Today</h2>
+          <p>Gretna Fire & Rescue has served this community since 1935. With your support, we'll keep answering the call for generations to come. Any gift — large or small — makes a difference.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="https://www.paypal.com/donate?hosted_button_id=XXXXXXXXXX" target="_blank" rel="noopener" class="btn-white">
+            Donate Now
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="mailto:info@gretnafirerescue.com?subject=Donation Inquiry" class="btn-ghost-white">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
