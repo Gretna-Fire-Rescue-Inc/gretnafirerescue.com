@@ -1,6 +1,6 @@
 {
   "burn_ban": {
-    "active": false,
+    "active": true,
     "message": "A burn ban is currently in effect for Pittsylvania County. All open burning is prohibited until further notice. Contact the Virginia Department of Forestry for exemptions."
   },
   "custom": {
