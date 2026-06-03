@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request dedicated EMS standby coverage for your event from Gretna Fire & Rescue Station 22. On-site ambulance and certified technicians available for special events in Gretna, Virginia.">
+  <title>EMS Standbys | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── QUICK FACTS STRIP ── */
+    .facts-strip {
+      background: var(--red);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .facts-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .fact-stat {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    .fact-stat:last-child { border-right: none; }
+
+    .fact-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .fact-stat-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .intro-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .intro-body p + p { margin-top: 1.1rem; }
+
+    /* ── REQUEST BOX ── */
+    .request-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+
+    .request-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .request-box > p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .request-box .btn { width: 100%; justify-content: center; margin-bottom: 0.75rem; }
+
+    .submit-options {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.9;
+    }
+
+    .submit-options strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .submit-options a {
+      color: var(--ash);
+      transition: color 0.2s;
+    }
+    .submit-options a:hover { color: var(--white); }
+
+    .deadline-note {
+      margin-top: 1rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      font-size: 0.81rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.6;
+    }
+
+    .deadline-note strong {
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .process-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .process-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .process-step {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process-step:last-child { border-right: none; }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(191,27,35,0.25);
+      margin-bottom: 1rem;
+    }
+
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ── SERVICE DETAILS ── */
+    .details-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .details-header {
+      margin-bottom: 3rem;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .detail-item {
+      padding: 2.5rem 2.5rem 2.5rem 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .detail-item:last-child {
+      padding-right: 0;
+      padding-left: 2.5rem;
+      border-right: none;
+    }
+
+    .detail-item:nth-child(2) {
+      padding-left: 2.5rem;
+    }
+
+    .detail-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(191,27,35,0.12);
+      border: 1px solid rgba(191,27,35,0.25);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+    }
+
+    .detail-item h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .detail-item p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.75;
+    }
+
+    /* ── TERMS ── */
+    .terms-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .terms-header {
+      margin-bottom: 3rem;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .term-item {
+      background: var(--charcoal);
+      padding: 1.75rem 2rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .term-num {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      flex-shrink: 0;
+      padding-top: 3px;
+      min-width: 24px;
+    }
+
+    .term-body h4 {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .term-body p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--red);
+      padding: 4rem 0;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-inner p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .facts-strip-grid { grid-template-columns: repeat(2, 1fr); }
+      .fact-stat:nth-child(2) { border-right: none; }
+      .fact-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .fact-stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .process-step:last-child { border-bottom: none; }
+      .details-grid { grid-template-columns: 1fr; }
+      .detail-item { padding: 2rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .detail-item:nth-child(2) { padding-left: 0; }
+      .detail-item:last-child { padding-left: 0; border-bottom: none; }
+      .terms-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .facts-strip-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Hall Rental</a></li>
+      <li><a href="standby.html" class="active">EMS Standbys</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Hall Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>EMS Standbys</span>
+        </div>
+        <h1 class="page-hero-title">EMS Dedicated <em>Standby</em> Services</h1>
+        <p class="page-hero-sub">On-site emergency medical coverage for your special event — an ambulance and certified technicians dedicated to your function for the duration.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK FACTS STRIP -->
+  <div class="facts-strip">
+    <div class="container" style="padding: 0;">
+      <div class="facts-strip-grid">
+        <div class="fact-stat">
+          <div class="fact-stat-num">$100</div>
+          <div class="fact-stat-label">Per Hour / Per Vehicle</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">14</div>
+          <div class="fact-stat-label">Days Notice Required</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">2</div>
+          <div class="fact-stat-label">Certified Technicians</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">48hr</div>
+          <div class="fact-stat-label">Cancellation Window</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <span class="label">What Is a Dedicated Standby?</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">EMS <span class="accent">On-Site</span> for Your Event</h2>
+          <div class="intro-body">
+            <p>A dedicated EMS standby means a Gretna Fire & Rescue ambulance and crew are physically stationed at your event for its duration — ready to respond immediately if a medical emergency occurs. Rather than waiting for a 911 call to be dispatched, help is already on scene.</p>
+            <p>Standbys are ideal for sporting events, festivals, concerts, fairs, races, and any large gathering where the risk of injury or medical emergency is elevated. Having dedicated EMS coverage demonstrates a commitment to participant and spectator safety.</p>
+            <p>Because GFR's primary obligation is always to 911 calls, dedicated coverage is subject to crew and vehicle availability. If a crew is diverted during your event, a replacement will be sent as soon as one is available.</p>
+          </div>
+        </div>
+        <div class="request-box">
+          <h3>Request a Standby</h3>
+          <p>Submit your Dedicated Standby Service Agreement online through our member portal. Requests must be received at least 14 days before your event.</p>
+          <a href="https://portal.gretnafirerescue.com/standby_request.php" target="_blank" rel="noopener" class="btn btn-red">
+            Submit Request Online
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <div class="deadline-note">
+            <strong>14-Day Deadline</strong>
+            Agreements must be received at least 14 days before the event start time. Requests submitted inside that window may be refused.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="process-section">
+    <div class="container">
+      <div class="process-header">
+        <span class="label">The Process</span>
+        <h2 class="h2">How to <span class="accent">Request Coverage</span></h2>
+      </div>
+    </div>
+    <div class="process-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3>Download &amp; Complete</h3>
+        <p>Submit the Dedicated Standby Service Agreement online through our member portal. Provide your event name, dates, times, location, organization, and contact details — all fields are required.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3>Sign &amp; Submit</h3>
+        <p>Sign the agreement and return it to GFR by email or mail no later than 14 days before your event. GFR will review the request and confirm availability. No coverage is guaranteed until GFR has confirmed.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3>Coverage &amp; Billing</h3>
+        <p>On the event day, an ambulance and crew will be on-site for the agreed period. After the event, GFR will invoice you for all hours of service. Payment is due within 30 days of receiving the invoice.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SERVICE DETAILS -->
+  <div class="details-section">
+    <div class="container">
+      <div class="details-header">
+        <span class="label">Coverage Details</span>
+        <h2 class="h2">What's <span class="accent">Included</span></h2>
+      </div>
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <div class="detail-icon">🚑</div>
+          <h3>Ambulance &amp; Crew</h3>
+          <p>Each standby unit consists of an emergency vehicle and two certified technicians, including at least one EMT-Basic. The crew will position themselves at your event and remain dedicated to it for the contracted period.</p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">⚕️</div>
+          <h3>ALS Availability</h3>
+          <p>The assigned vehicle may or may not be equipped for Advanced Life Support (ALS) care on-site. However, ALS services are available elsewhere in the county and can be dispatched to the event if needed.</p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">📻</div>
+          <h3>Radio Communications</h3>
+          <p>If coordination with on-site medical staff is required, event radios will be provided to GFR providers for the duration of the standby. Discuss this need when submitting your agreement.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMS -->
+  <div class="terms-section">
+    <div class="container">
+      <div class="terms-header">
+        <span class="label">Agreement Terms</span>
+        <h2 class="h2">Key <span class="accent">Terms &amp; Conditions</span></h2>
+      </div>
+      <div class="terms-grid">
+
+        <div class="term-item">
+          <div class="term-num">01</div>
+          <div class="term-body">
+            <h4>Dedicated Coverage</h4>
+            <p>GFR will station an ambulance and two technicians (min. 1 EMT-Basic) at your event for the agreed dates, times, and location specified in the agreement.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">02</div>
+          <div class="term-body">
+            <h4>Subject to Availability</h4>
+            <p>Dedicated standbys are subject to the availability of EMS crews and spare emergency vehicles at the time of the event.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">03</div>
+          <div class="term-body">
+            <h4>911 Calls Take Priority</h4>
+            <p>If a life-threatening emergency requires the dedicated crew to respond elsewhere, another ambulance will be routed to your event upon availability.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">04</div>
+          <div class="term-body">
+            <h4>Rate</h4>
+            <p>The standby fee is <strong>$100 per hour, per vehicle</strong> assigned to the event.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">05</div>
+          <div class="term-body">
+            <h4>Invoicing &amp; Payment</h4>
+            <p>GFR will invoice the service user upon completion of standby services. Payment is due within 30 days of receiving the invoice.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">06</div>
+          <div class="term-body">
+            <h4>14-Day Submission Deadline</h4>
+            <p>GFR reserves the right to refuse any agreement submitted less than 14 days before the event start time.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">07</div>
+          <div class="term-body">
+            <h4>Cancellation</h4>
+            <p>Either party may cancel the agreement by providing at least 48 hours advance notice before the scheduled event.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">08</div>
+          <div class="term-body">
+            <h4>Standard of Care</h4>
+            <p>Nothing in the agreement creates a higher standard of care than that recognized under the laws of the Commonwealth of Virginia for EMS services.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">09</div>
+          <div class="term-body">
+            <h4>Patient Transport Billing</h4>
+            <p>Standby fees cover only GFR's on-site availability. Normal charges for patient care and transport are billed separately to the patient.</p>
+          </div>
+        </div>
+
+        <div class="term-item">
+          <div class="term-num">10</div>
+          <div class="term-body">
+            <h4>Event Radios</h4>
+            <p>If communication with on-site medical staff is required, event radios will be provided to GFR providers for use during the standby where applicable.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2>Ready to Book EMS Coverage?</h2>
+          <p>Download the agreement, fill it out, and return it to us at least 14 days before your event. Questions? Reach out and we'll walk you through the process.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="https://portal.gretnafirerescue.com/standby_request.php" target="_blank" rel="noopener" class="btn-white">
+            Submit Request Online
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="mailto:info@gretnafirerescue.com?subject=EMS Standby Inquiry" class="btn-ghost-white">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
