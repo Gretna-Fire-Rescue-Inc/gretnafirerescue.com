@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rent the Gretna Fire & Rescue station hall for your next event. Our community hall is available for private parties, meetings, and local gatherings in Gretna, Virginia.">
+  <title>Building Rental | Gretna Fire & Rescue</title>
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 4rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+    .page-hero-title em { font-style: normal; color: var(--red); }
+
+    .page-hero-sub {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ash);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── QUICK FACTS STRIP ── */
+    .facts-strip {
+      background: var(--red);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .facts-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .fact-stat {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    .fact-stat:last-child { border-right: none; }
+
+    .fact-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .fact-stat-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .intro-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.85;
+    }
+
+    .intro-body p + p { margin-top: 1.1rem; }
+
+    /* ── BOOKING BOX ── */
+    .booking-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+
+    .booking-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .booking-box > p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .booking-box .btn { width: 100%; justify-content: center; }
+
+    .contact-detail {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.75;
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-detail a {
+      color: var(--ash);
+      transition: color 0.2s;
+    }
+
+    .contact-detail a:hover { color: var(--white); }
+
+    /* ── AMENITIES ── */
+    .amenities-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .amenities-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .amenity-card {
+      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .amenity-card:last-child { border-right: none; }
+
+    .amenity-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(191,27,35,0.12);
+      border: 1px solid rgba(191,27,35,0.25);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+
+    .amenity-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .amenity-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .pricing-header {
+      margin-bottom: 3rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .pricing-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 2rem 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--red);
+      border-top-width: 3px;
+    }
+
+    .pricing-tag {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-rate {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .pricing-unit {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--ash);
+      text-transform: uppercase;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .pricing-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.5;
+    }
+
+    .pricing-includes li::before {
+      content: '›';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .deposit-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.7;
+    }
+
+    .deposit-note strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── RULES ── */
+    .rules-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .rules-header {
+      margin-bottom: 3rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .rules-group h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .rules-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ash);
+      line-height: 1.6;
+    }
+
+    .rule-bullet {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .rule-bullet.allowed {
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #22c55e;
+    }
+
+    .rule-bullet.prohibited {
+      background: rgba(191,27,35,0.15);
+      border: 1px solid rgba(191,27,35,0.3);
+      color: var(--red);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--red);
+      padding: 4rem 0;
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-inner p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      border-color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      transition: all 0.2s var(--ease);
+      text-decoration: none;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .facts-strip-grid { grid-template-columns: repeat(2, 1fr); }
+      .fact-stat:nth-child(2) { border-right: none; }
+      .fact-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .fact-stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .amenity-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .amenity-card:last-child { border-bottom: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .facts-strip-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html" class="active">Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Building Rental</span>
+        </div>
+        <h1 class="page-hero-title">Station <em>Hall</em> Rental</h1>
+        <p class="page-hero-sub">Host your next event at Gretna Fire & Rescue Station 22. Our community hall is available for private gatherings, meetings, and local celebrations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK FACTS STRIP -->
+  <div class="facts-strip">
+    <div class="container" style="padding: 0;">
+      <div class="facts-strip-grid">
+        <div class="fact-stat">
+          <div class="fact-stat-num">150</div>
+          <div class="fact-stat-label">Max Capacity</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">4hr</div>
+          <div class="fact-stat-label">Minimum Rental</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">2</div>
+          <div class="fact-stat-label">Event Spaces</div>
+        </div>
+        <div class="fact-stat">
+          <div class="fact-stat-num">Free</div>
+          <div class="fact-stat-label">Parking On-Site</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <span class="label">About the Space</span>
+          <h2 class="h2" style="margin-bottom: 1.5rem;">A Great Venue for <span class="accent">Your Community</span></h2>
+          <div class="intro-body">
+            <p>Gretna Fire & Rescue makes its station hall available to the community for private events, meetings, and celebrations. The rental program is one of the ways we give back — and your rental fees help fund our ongoing operations and equipment needs.</p>
+            <p>The main hall offers ample open floor space suitable for banquets, receptions, birthday parties, reunions, and community meetings. The hall is equipped with tables and chairs, a kitchen for food service, and on-site parking for your guests.</p>
+            <p>We ask that all renters respect the working nature of our station. Our crews remain on duty during your event and apparatus bays are not part of the rental space. Please review the rental guidelines below before submitting your request.</p>
+          </div>
+        </div>
+        <div class="booking-box">
+          <h3>Request a Rental</h3>
+          <p>Check availability and reserve the hall by contacting us directly. We'll confirm your date, walk you through the agreement, and collect the deposit to hold your reservation.</p>
+          <a href="mailto:info@gretnafirerescue.com?subject=Building Rental Inquiry" class="btn btn-red">
+            Email Us to Book
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <div class="contact-detail">
+            <strong>Contact Information</strong>
+            <a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a><br>
+            <a href="tel:4346562621">(434) 656-2621</a> — Non-Emergency Line<br>
+            122 East Gretna Road, Gretna, VA 24557
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMENITIES -->
+  <div class="amenities-section">
+    <div class="container">
+      <div class="amenities-header">
+        <span class="label">What's Included</span>
+        <h2 class="h2">Hall <span class="accent">Amenities</span></h2>
+      </div>
+    </div>
+    <div class="amenities-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
+
+      <div class="amenity-card">
+        <div class="amenity-icon">🪑</div>
+        <h3>Tables &amp; Chairs</h3>
+        <p>Tables and folding chairs for up to 150 guests are available on-site. Setup and breakdown is the renter's responsibility. Additional arrangement configurations are welcome.</p>
+      </div>
+
+      <div class="amenity-card">
+        <div class="amenity-icon">🍽️</div>
+        <h3>Kitchen Access</h3>
+        <p>A shared kitchen is included with your rental and equipped with a range, refrigerator, and prep space. Renters are responsible for supplying all food, beverages, and serving ware.</p>
+      </div>
+
+      <div class="amenity-card">
+        <div class="amenity-icon">🅿️</div>
+        <h3>On-Site Parking</h3>
+        <p>Free off-street parking is available adjacent to the station for your guests. Parking availability may vary depending on active department operations.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing-section">
+    <div class="container">
+      <div class="pricing-header">
+        <span class="label">Rates</span>
+        <h2 class="h2">Rental <span class="accent">Pricing</span></h2>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-tag">Community Rate</div>
+          <h3>Nonprofit &amp; Civic</h3>
+          <div class="pricing-rate">
+            <span class="pricing-amount">$75</span>
+            <span class="pricing-unit">/ half day</span>
+          </div>
+          <ul class="pricing-includes">
+            <li>Up to 4 hours of use</li>
+            <li>Tables and chairs included</li>
+            <li>Kitchen access</li>
+            <li>On-site parking</li>
+            <li>Available to nonprofits and civic groups</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-tag">Most Common</div>
+          <h3>Private Event</h3>
+          <div class="pricing-rate">
+            <span class="pricing-amount">$150</span>
+            <span class="pricing-unit">/ half day</span>
+          </div>
+          <ul class="pricing-includes">
+            <li>Up to 4 hours of use</li>
+            <li>Tables and chairs included</li>
+            <li>Kitchen access</li>
+            <li>On-site parking</li>
+            <li>Suitable for parties, receptions, and reunions</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tag">Extended Use</div>
+          <h3>Full Day</h3>
+          <div class="pricing-rate">
+            <span class="pricing-amount">$250</span>
+            <span class="pricing-unit">/ full day</span>
+          </div>
+          <ul class="pricing-includes">
+            <li>Up to 8 hours of use</li>
+            <li>Tables and chairs included</li>
+            <li>Kitchen access</li>
+            <li>On-site parking</li>
+            <li>Ideal for all-day events and banquets</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="deposit-note">
+        <strong>Deposit &amp; Payment Policy</strong>
+        A refundable security deposit of $100 is required to hold your reservation. The deposit will be returned within 5–7 business days following your event, provided the facility is left in clean condition with no damage. Full rental payment is due no later than 7 days before your event date. We accept cash, check, or money order payable to Gretna Fire &amp; Rescue.
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <div class="rules-section">
+    <div class="container">
+      <div class="rules-header">
+        <span class="label">Rental Guidelines</span>
+        <h2 class="h2">What's Allowed &amp; <span class="accent">What's Not</span></h2>
+      </div>
+      <div class="rules-grid">
+
+        <div class="rules-group">
+          <h3>Permitted</h3>
+          <ul class="rules-list">
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Private parties, birthday celebrations, and family reunions
+            </li>
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Community meetings, civic events, and nonprofit gatherings
+            </li>
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Catered meals and food service in designated kitchen area
+            </li>
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Decorations that do not require nails, staples, or damage to walls
+            </li>
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Music at a reasonable volume appropriate to the event
+            </li>
+            <li>
+              <span class="rule-bullet allowed">✓</span>
+              Alcohol with prior written approval from department leadership
+            </li>
+          </ul>
+        </div>
+
+        <div class="rules-group">
+          <h3>Not Permitted</h3>
+          <ul class="rules-list">
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Access to apparatus bays, equipment rooms, or crew quarters
+            </li>
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Open flames, candles, or any fire-based decorations inside the hall
+            </li>
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Smoking or vaping anywhere on station property
+            </li>
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Exceeding the posted occupancy limit of 150 persons
+            </li>
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Subleasing or transferring the rental agreement to another party
+            </li>
+            <li>
+              <span class="rule-bullet prohibited">✗</span>
+              Events that interfere with active emergency response operations
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2>Ready to Book?</h2>
+          <p>Contact us to check availability for your date. We'll walk you through the rental agreement, answer any questions, and get your event on the calendar.</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="mailto:info@gretnafirerescue.com?subject=Building Rental Inquiry" class="btn-white">
+            Email Us to Book
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:4346562621" class="btn-ghost-white">
+            Call (434) 656-2621
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="#">Fire Safety Tips</a></li>
+            <li><a href="#">Burn Permits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="#">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
