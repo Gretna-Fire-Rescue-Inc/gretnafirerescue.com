@@ -7,6 +7,7 @@
   <title>Join Us | Gretna Fire & Rescue</title>
   <link rel="icon" type="image/png" href="images/patch.png">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/banner.css">
   <style>
 
     /* ── PAGE HERO ── */
@@ -434,6 +435,9 @@
 </head>
 <body>
 
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="announcement-banner"></div>
+
   <!-- NAV -->
   <nav class="nav scrolled">
     <a href="index.html" class="nav-brand">
@@ -450,7 +454,7 @@
       <li><a href="events.html">Events</a></li>
       <li><a href="recruitment.html">Join Us</a></li>
       <li><a href="donations.html">Donate</a></li>
-      <li><a href="rental.html">Hall Rental</a></li>
+      <li><a href="rental.html">Rental</a></li>
       <li><a href="standby.html">EMS Standbys</a></li>
     </ul>
     <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
@@ -467,7 +471,7 @@
     <a href="events.html">Events</a>
     <a href="recruitment.html">Join Us</a>
     <a href="donations.html">Donate</a>
-    <a href="rental.html">Hall Rental</a>
+    <a href="rental.html">Building Rental</a>
     <a href="standby.html">EMS Standbys</a>
     <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
   </nav>
@@ -662,9 +666,9 @@
           <h4>Contact</h4>
           <ul>
             <li><a href="tel:911">Emergency: 9-1-1</a></li>
-            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="tel:4340000000">Non-Emergency: (434) 000-0000</a></li>
             <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
-            <li><a href="#">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="#">122 East Gretna Road, Gretna VA</a></li>
             <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
           </ul>
         </div>
@@ -678,5 +682,12 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Add body class when banner is visible to offset content
+    const _b = document.getElementById("announcement-banner");
+    if (_b) new MutationObserver(() => {
+      document.body.classList.toggle("has-banner", _b.style.display !== "none" && _b.innerHTML !== "");
+    }).observe(_b, { attributes: true, childList: true });
+  </script>
 </body>
 </html>

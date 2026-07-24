@@ -1,0 +1,81 @@
+
+/* ============================================================
+   ANNOUNCEMENT BANNER
+   ============================================================ */
+
+#announcement-banner {
+  display: none; /* shown by JS only when alerts exist */
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 800;
+}
+
+.ann-item {
+  position: relative;
+  padding: 0.6rem 2.5rem;
+}
+
+.ann-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-right: 2rem;
+}
+
+.ann-icon { font-size: 1rem; flex-shrink: 0; }
+
+.ann-message {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+.ann-source {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  padding: 2px 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ann-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.ann-close:hover { color: var(--white); }
+
+/* Offset page content when banner is visible */
+body.has-banner .hero,
+body.has-banner .page-hero {
+  padding-top: calc(var(--nav-h) + 2.5rem);
+}
+
+@media (max-width: 600px) {
+  .ann-item { padding: 0.6rem 2.5rem 0.6rem 1rem; }
+  .ann-message { font-size: 0.7rem; letter-spacing: 0.06em; }
+}
