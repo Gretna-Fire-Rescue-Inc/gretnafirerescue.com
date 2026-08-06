@@ -432,6 +432,7 @@
     }
 
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -688,6 +689,17 @@
     if (_b) new MutationObserver(() => {
       document.body.classList.toggle("has-banner", _b.style.display !== "none" && _b.innerHTML !== "");
     }).observe(_b, { attributes: true, childList: true });
+  </script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>

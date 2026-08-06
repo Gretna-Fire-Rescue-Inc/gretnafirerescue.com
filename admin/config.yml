@@ -1,0 +1,173 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media uploads
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# CMS settings
+locale: en
+show_preview_links: true
+
+collections:
+
+  # ── EVENTS ──────────────────────────────────────────
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    folder: "_events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - label: Upcoming
+        field: date
+        pattern: "\\d{4}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "The name of the event"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+        hint: "Date and time of the event"
+
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        required: false
+        hint: "e.g. GFR Station 22, 122 East Gretna Road"
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Community Event", value: "community" }
+          - { label: "Training", value: "training" }
+          - { label: "Fundraiser", value: "fundraiser" }
+          - { label: "Meeting", value: "meeting" }
+          - { label: "Open House", value: "openhouse" }
+          - { label: "Other", value: "other" }
+        default: "community"
+
+      - label: "Description"
+        name: "body"
+        widget: "markdown"
+        hint: "Full description of the event"
+
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: true
+        hint: "Uncheck to hide this event from the public site"
+
+  # ── NEWS ────────────────────────────────────────────
+  - name: "news"
+    label: "News"
+    label_singular: "News Post"
+    folder: "_news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Department News", value: "news" }
+          - { label: "Fire", value: "fire" }
+          - { label: "EMS", value: "ems" }
+          - { label: "Community", value: "community" }
+          - { label: "Training", value: "training" }
+          - { label: "Safety", value: "safety" }
+        default: "news"
+
+      - label: "Summary"
+        name: "summary"
+        widget: "string"
+        hint: "Short summary shown in the news list (1-2 sentences)"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Optional photo for this news post"
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: true
+
+  # ── ANNOUNCEMENTS ───────────────────────────────────
+  - name: "announcements"
+    label: "Announcements"
+    label_singular: "Announcement"
+    folder: "_announcements"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{type}}"
+    fields:
+      - label: "Title / Message"
+        name: "title"
+        widget: "string"
+        hint: "Short announcement shown in the banner (e.g. Burn ban in effect for Pittsylvania County)"
+
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "Info (Blue)", value: "info" }
+          - { label: "Warning (Yellow)", value: "warning" }
+          - { label: "Alert (Red)", value: "danger" }
+        default: "info"
+
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Toggle off to hide this announcement without deleting it"
+
+      - label: "Start Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+
+      - label: "Expiry Date"
+        name: "expires"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+        required: false
+        hint: "Optional — announcement auto-hides after this date"
+
+      - label: "Details"
+        name: "body"
+        widget: "markdown"
+        required: false
+        hint: "Optional longer description (not shown in banner, can be used for a detail page later)"
