@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Gretna-Fire-Rescue-Inc/gretnafirerescue.com
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 # Media uploads
 media_folder: "images/uploads"
