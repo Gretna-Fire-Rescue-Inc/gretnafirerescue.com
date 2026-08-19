@@ -701,5 +701,12 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/content.js"></script>
+  <script>
+    const _b = document.getElementById("announcement-banner");
+    if (_b) new MutationObserver(() => {
+      document.body.classList.toggle("has-banner", _b.style.display !== "none" && _b.innerHTML !== "");
+    }).observe(_b, { attributes: true, childList: true });
+  </script>
 </body>
 </html>

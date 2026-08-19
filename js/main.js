@@ -5,8 +5,6 @@
 
 (function () {
 
-  const PORTAL_URL = 'https://dev.gretnafirerescue.com';
-
   /* ── NAV SCROLL STATE ── */
   const nav = document.querySelector('.nav');
   if (nav) {
@@ -58,56 +56,5 @@
 
     revealEls.forEach(el => observer.observe(el));
   }
-
-  /* ── ANNOUNCEMENT BANNER ── */
-  async function loadAnnouncements() {
-    const container = document.getElementById('announcement-banner');
-    if (!container) return;
-
-    try {
-      const res  = await fetch(PORTAL_URL + '/api/announcements.php', { cache: 'no-cache' });
-      const data = await res.json();
-
-      if (!data.success || !data.has_alerts || !data.announcements.length) {
-        container.style.display = 'none';
-        return;
-      }
-
-      // Build banner items — show top 3 max
-      const items = data.announcements.slice(0, 3);
-      const colors = { danger: '#BF1B23', warning: '#d97706', info: '#2563eb' };
-      const icons  = { danger: '🚨', warning: '⚠️', info: 'ℹ️' };
-
-      container.innerHTML = items.map((item, i) => `
-        <div class="ann-item ann-${item.type}" style="background:${colors[item.type] || colors.info};">
-          <div class="ann-inner">
-            <span class="ann-icon">${icons[item.type] || icons.info}</span>
-            <span class="ann-message">${escapeHtml(item.message)}</span>
-            ${item.source === 'nws' ? '<span class="ann-source">NWS Alert</span>' : ''}
-          </div>
-          ${i === 0 ? `<button class="ann-close" onclick="dismissBanner()" aria-label="Dismiss">✕</button>` : ''}
-        </div>
-      `).join('');
-
-      container.style.display = 'block';
-
-    } catch (e) {
-      // API unavailable — hide banner silently
-      container.style.display = 'none';
-    }
-  }
-
-  window.dismissBanner = function() {
-    const b = document.getElementById('announcement-banner');
-    if (b) b.style.display = 'none';
-  };
-
-  function escapeHtml(str) {
-    const d = document.createElement('div');
-    d.textContent = str;
-    return d.innerHTML;
-  }
-
-  loadAnnouncements();
 
 })();
