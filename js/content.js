@@ -255,6 +255,17 @@
     if (b) b.style.display = 'none';
   };
 
+  /* ── AUTO-UPDATING "YEARS SINCE" STATS ── */
+  function renderYearsSince() {
+    document.querySelectorAll('[data-years-since]').forEach(el => {
+      const founded = parseInt(el.dataset.yearsSince, 10);
+      if (!isNaN(founded)) {
+        el.textContent = new Date().getFullYear() - founded;
+      }
+    });
+  }
+
+  renderYearsSince();
   renderEvents();
   renderNews();
   renderAnnouncements();
