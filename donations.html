@@ -261,7 +261,7 @@
 
     .ways-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -635,10 +635,14 @@
         <div class="donate-box">
           <h3>Donate Online</h3>
           <p>Make a secure one-time or recurring gift using PayPal. No account required — all major cards accepted.</p>
-          <a href="https://www.paypal.com/donate?hosted_button_id=XXXXXXXXXX" target="_blank" rel="noopener" class="btn btn-red">
-            Donate Now
-            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
+          <form action="https://www.paypal.com/donate" method="post" target="_blank" style="margin:0;">
+            <input type="hidden" name="hosted_button_id" value="6ER3FTQT3X3XU" />
+            <button type="submit" class="btn btn-red" style="appearance:none; -webkit-appearance:none; cursor:pointer; width:100%;">
+              Donate Now
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" style="display:none;" />
+          </form>
           <div class="donate-divider">or pay by check</div>
           <div class="check-instructions">
             <strong>Make Checks Payable To</strong>
@@ -660,16 +664,6 @@
       </div>
     </div>
     <div class="ways-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
-
-      <div class="way-card">
-        <div class="way-icon">🛒</div>
-        <h3>Amazon Wish List</h3>
-        <p>Browse our department wish list and purchase equipment or supplies we need directly. Items ship straight to the station — no cash required.</p>
-        <a href="https://www.amazon.com/hz/wishlist/ls/XXXXXXXXXX" target="_blank" rel="noopener" class="btn-outline">
-          View Wish List
-          <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
 
       <div class="way-card">
         <div class="way-icon">🏢</div>
@@ -750,10 +744,14 @@
           <p>Gretna Fire & Rescue has served this community since 1935. With your support, we'll keep answering the call for generations to come. Any gift — large or small — makes a difference.</p>
         </div>
         <div class="cta-buttons">
-          <a href="https://www.paypal.com/donate?hosted_button_id=XXXXXXXXXX" target="_blank" rel="noopener" class="btn-white">
-            Donate Now
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
+          <form action="https://www.paypal.com/donate" method="post" target="_blank" style="margin:0;">
+            <input type="hidden" name="hosted_button_id" value="6ER3FTQT3X3XU" />
+            <button type="submit" class="btn-white" style="appearance:none; -webkit-appearance:none; border:1.5px solid var(--white); cursor:pointer; width:100%;">
+              Donate Now
+              <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" style="display:none;" />
+          </form>
           <a href="mailto:info@gretnafirerescue.com?subject=Donation Inquiry" class="btn-ghost-white">
             Contact Us
           </a>
