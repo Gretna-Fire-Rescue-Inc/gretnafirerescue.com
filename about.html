@@ -231,30 +231,23 @@
 
     .history-block p + p { margin-top: 1rem; }
 
-    .history-img-placeholder {
+    .history-img {
       aspect-ratio: 4/3;
       background: var(--charcoal);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: var(--steel);
+      overflow: hidden;
     }
 
-    .history-img-placeholder span {
-      font-size: 2.5rem;
+    .history-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .history-img-placeholder p {
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--steel);
+    .history-img.contain img {
+      object-fit: contain;
     }
 
     /* ── OFFICERS ── */
@@ -501,9 +494,8 @@
           <p>The roots of fire and emergency medical services in Gretna date back to 1935, when the Gretna Volunteer Fire Department (GVFD) was officially established under Mayor G.H. Vaden's leadership following the installation of the town's first water lines. B.E. Coffee served as the department's first chief through 1947.</p>
           <p>Early firefighting relied on bucket brigades and hand-pulled wagons. Progress accelerated with the purchase of GVFD's first motorized truck in 1948 and a new Ford pumper in 1951. Major incidents in the 1950s highlighted the need for improved training and equipment.</p>
         </div>
-        <div class="history-img-placeholder">
-          <span>📷</span>
-          <p>Original GVFD members & apparatus</p>
+        <div class="history-img">
+          <img src="images/history-founding.jpg" alt="Original Gretna Volunteer Fire Department members and apparatus in front of the department's early fire station">
         </div>
       </div>
 
@@ -515,9 +507,8 @@
           <p>A new three-bay station on Shelton Street was built in 1967. In 1968, Gretna Rescue Squad, Inc. (GRS) formed to meet growing EMS needs; many GVFD members also volunteered with GRS. On January 1, 1969, GRS assumed full responsibility for ambulance services while operating from the fire station.</p>
           <p>Throughout the 1980s and 1990s, both organizations modernized with specialized apparatus, new turnout gear, a joint low-band pager system, air compressor units, and a repeater-based radio network, supported by strong community backing and annual fundraisers.</p>
         </div>
-        <div class="history-img-placeholder">
-          <span>📷</span>
-          <p>Gretna Rescue Squad station & ambulances</p>
+        <div class="history-img">
+          <img src="images/history-ems.jpg" alt="Gretna Rescue Squad building with rescue vans parked outside">
         </div>
       </div>
 
@@ -529,9 +520,8 @@
           <p>In 1993, GVFD became an independent organization, separate from the Town of Gretna. A modern station opened at 122 East Gretna Road in 2004 — made possible through local donations, grant funding including a major FEMA award, and countless volunteer hours.</p>
           <p>In 2019, GVFD and GRS fully merged to form Gretna Fire & Rescue, providing seamless fire protection and emergency medical services. Since the merger, the department has added two new fire engines and one new ambulance, maintaining an active roster of 70 volunteers and 6 paid EMS staff.</p>
         </div>
-        <div class="history-img-placeholder">
-          <span>📷</span>
-          <p>Modern Gretna Fire & Rescue units</p>
+        <div class="history-img contain">
+          <img src="images/history-modern.jpg" alt="Modern Gretna Fire & Rescue Engine 221 and Rescue 221 ambulance">
         </div>
       </div>
 
