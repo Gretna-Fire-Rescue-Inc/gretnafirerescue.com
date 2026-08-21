@@ -22,7 +22,17 @@
     .page-hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+      background-image: url('images/history-modern.jpg');
+      background-position: center 40%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .page-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(13,13,13,0.88) 40%, rgba(191,27,35,0.35) 100%), rgba(0,0,0,0.35);
     }
 
     .page-hero-inner {
