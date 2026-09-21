@@ -220,6 +220,14 @@
       overflow: hidden;
     }
 
+    .apparatus-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .apparatus-img-emoji {
       font-size: 3rem;
     }
@@ -552,16 +560,16 @@
   <div class="fleet-stats">
     <div class="fleet-stats-inner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem;">
       <div class="fs-item">
-        <div class="fs-num">3</div>
+        <div class="fs-num">5</div>
         <div class="fs-label">Fire Apparatus</div>
       </div>
       <div class="fs-item">
-        <div class="fs-num">2</div>
-        <div class="fs-label">Medic Units</div>
+        <div class="fs-num">3</div>
+        <div class="fs-label">EMS Transport</div>
       </div>
       <div class="fs-item">
-        <div class="fs-num">2</div>
-        <div class="fs-label">Support Units</div>
+        <div class="fs-num">1</div>
+        <div class="fs-label">Command Unit</div>
       </div>
       <div class="fs-item">
         <div class="fs-num">24/7</div>
@@ -588,28 +596,21 @@
             <span class="summary-icon">🔥</span>
             <div class="summary-text">
               <h4>Fire Apparatus</h4>
-              <p>Attack engines and water supply for structural, vehicle, and wildland response</p>
+              <p>Engines, a heavy-duty rescue engine, a brush truck, and a tanker for structural, vehicle, and wildland response</p>
             </div>
           </div>
           <div class="summary-item">
             <span class="summary-icon">🚑</span>
             <div class="summary-text">
-              <h4>EMS / Medic Units</h4>
-              <p>ALS-equipped ambulances staffed by certified EMTs and paramedics</p>
+              <h4>EMS Transport</h4>
+              <p>Ambulances staffed by certified EMTs and paramedics for patient care and transport</p>
             </div>
           </div>
           <div class="summary-item">
-            <span class="summary-icon">🛠️</span>
+            <span class="summary-icon">🚙</span>
             <div class="summary-text">
-              <h4>Rescue & Support</h4>
-              <p>Utility and rescue units for extrication, logistics, and special operations</p>
-            </div>
-          </div>
-          <div class="summary-item">
-            <span class="summary-icon">🌲</span>
-            <div class="summary-text">
-              <h4>Wildland / Brush</h4>
-              <p>Off-road capable unit for grass, brush, and wildland-interface fires</p>
+              <h4>Command & Support</h4>
+              <p>Command vehicle for incident command, coordination, and logistics support</p>
             </div>
           </div>
         </div>
@@ -627,22 +628,25 @@
     </div>
     <div class="apparatus-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
 
-      <!-- ENGINE 22 -->
+      <!-- ENGINE 221 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🚒</span>
-          <span class="apparatus-img-unit">Engine 22</span>
+          <img src="images/apparatus-engine-221.jpg" alt="Engine 221, a 2020 Pierce Enforcer fire engine">
           <span class="apparatus-badge badge-fire">Fire</span>
           <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">E-22</div>
-          <h3>Engine 22</h3>
-          <p class="apparatus-role">Primary Attack Pumper — first-due structural and vehicle fire response across the district.</p>
+          <div class="apparatus-designation">E-221</div>
+          <h3>Engine 221</h3>
+          <p class="apparatus-role">Class A attack pumper providing structural and vehicle fire response for Station 22.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
               <span class="spec-label">Type</span>
               <span class="spec-val">Class A Pumper</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2020 Pierce Enforcer</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Pump</span>
@@ -650,7 +654,7 @@
             </div>
             <div class="spec-row">
               <span class="spec-label">Tank</span>
-              <span class="spec-val">500 Gallons</span>
+              <span class="spec-val">1,000 Gallons</span>
             </div>
           </div>
           <ul class="apparatus-cap">
@@ -661,26 +665,66 @@
         </div>
       </div>
 
-      <!-- ENGINE 221 -->
+      <!-- RESCUE ENGINE 222 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🚒</span>
-          <span class="apparatus-img-unit">Engine 221</span>
+          <img src="images/apparatus-rescue-engine-222.jpg" alt="Rescue Engine 222, a 2025 Pierce Enforcer heavy-duty rescue engine">
           <span class="apparatus-badge badge-fire">Fire</span>
           <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">E-221</div>
-          <h3>Engine 221</h3>
-          <p class="apparatus-role">Second-due attack pumper supporting fire operations and rural water supply.</p>
+          <div class="apparatus-designation">RE-222</div>
+          <h3>Rescue Engine 222</h3>
+          <p class="apparatus-role">Heavy-duty rescue engine combining fire attack capability with technical rescue and extrication equipment.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Heavy-Duty Rescue Engine</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2025 Pierce Enforcer</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Pump</span>
+              <span class="spec-val">1,500 GPM</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">750 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Structural &amp; vehicle fire attack</li>
+            <li>Vehicle extrication with hydraulic rescue tools</li>
+            <li>Technical rescue &amp; scene support operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ENGINE 223 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <img src="images/apparatus-engine-223.jpg" alt="Engine 223, a 1993 E-One fire engine">
+          <span class="apparatus-badge badge-fire">Fire</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">E-223</div>
+          <h3>Engine 223</h3>
+          <p class="apparatus-role">Class A attack pumper supporting fire operations across the district.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
               <span class="spec-label">Type</span>
               <span class="spec-val">Class A Pumper</span>
             </div>
             <div class="spec-row">
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">1993 E-One</span>
+            </div>
+            <div class="spec-row">
               <span class="spec-label">Pump</span>
-              <span class="spec-val">1,250 GPM</span>
+              <span class="spec-val">1,500 GPM</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Tank</span>
@@ -688,24 +732,59 @@
             </div>
           </div>
           <ul class="apparatus-cap">
-            <li>Secondary attack &amp; water supply</li>
-            <li>Large-tank rural area operations</li>
+            <li>Structural &amp; vehicle fire attack</li>
+            <li>Mutual aid response throughout Pittsylvania County</li>
             <li>Backup front-line pumper</li>
           </ul>
         </div>
       </div>
 
-      <!-- TANKER 22 -->
+    </div>
+    <div class="apparatus-grid-2" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+
+      <!-- BRUSH 225 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🚒</span>
-          <span class="apparatus-img-unit">Tanker 22</span>
+          <img src="images/apparatus-brush-225.jpg" alt="Brush 225, a 2001 Dodge Ram brush truck">
           <span class="apparatus-badge badge-fire">Fire</span>
           <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">T-22</div>
-          <h3>Tanker 22</h3>
+          <div class="apparatus-designation">BR-225</div>
+          <h3>Brush 225</h3>
+          <p class="apparatus-role">Off-road capable unit designed for grass, brush, and wildland-interface fire suppression across our rural district.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Brush / Wildland Unit</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2001 Dodge Ram</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Tank</span>
+              <span class="spec-val">250 Gallons</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Off-road access to remote fire locations</li>
+            <li>Initial brush &amp; grass fire attack</li>
+            <li>Wildland-urban interface operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TANKER 226 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <img src="images/apparatus-tanker-226.jpg" alt="Tanker 226, a 2008 Kenworth water tender">
+          <span class="apparatus-badge badge-fire">Fire</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">T-226</div>
+          <h3>Tanker 226</h3>
           <p class="apparatus-role">Water supply tender for rural and non-hydrant operations across the district.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
@@ -713,12 +792,12 @@
               <span class="spec-val">Water Tender</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Pump</span>
-              <span class="spec-val">750 GPM</span>
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2008 Kenworth</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Tank</span>
-              <span class="spec-val">2,500 Gallons</span>
+              <span class="spec-val">2,000 Gallons</span>
             </div>
           </div>
           <ul class="apparatus-cap">
@@ -732,36 +811,40 @@
     </div>
   </div>
 
-  <!-- EMS APPARATUS -->
+  <!-- EMS TRANSPORT -->
   <div class="apparatus-section bg-black">
     <div class="container">
       <div class="category-header">
-        <span class="label">EMS Apparatus</span>
-        <h2 class="h2">Medic <span class="accent">Units</span></h2>
+        <span class="label">EMS Transport</span>
+        <h2 class="h2">Transport <span class="accent">Units</span></h2>
       </div>
     </div>
-    <div class="apparatus-grid-2" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="apparatus-grid" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
 
-      <!-- MEDIC 22 -->
+      <!-- TRANSPORT 221 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
           <span class="apparatus-img-emoji">🚑</span>
-          <span class="apparatus-img-unit">Medic 22</span>
+          <span class="apparatus-img-unit">Transport 221</span>
           <span class="apparatus-badge badge-ems">EMS</span>
           <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">M-22</div>
-          <h3>Medic 22</h3>
-          <p class="apparatus-role">Primary ALS ambulance staffed 24/7 by certified EMTs and paramedics for emergency medical response and patient transport.</p>
+          <div class="apparatus-designation">T-221</div>
+          <h3>Transport 221</h3>
+          <p class="apparatus-role">Ambulance staffed by certified EMTs and paramedics for emergency medical response and patient transport.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
               <span class="spec-label">Type</span>
-              <span class="spec-val">Type I ALS Ambulance</span>
+              <span class="spec-val">Type I Ambulance</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Level</span>
-              <span class="spec-val">Advanced Life Support</span>
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2021 Dodge</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Box</span>
+              <span class="spec-val">Road Rescue</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Crew</span>
@@ -769,34 +852,36 @@
             </div>
           </div>
           <ul class="apparatus-cap">
-            <li>Advanced cardiac monitoring &amp; 12-lead ECG</li>
-            <li>IV/IO therapy, medication administration</li>
-            <li>Emergency medical transport to Sovah Martinsville</li>
-            <li>Cardiac arrest resuscitation &amp; airway management</li>
+            <li>Emergency medical response &amp; patient transport</li>
+            <li>MCI &amp; multi-unit EMS response support</li>
+            <li>EMS standby events &amp; community coverage</li>
           </ul>
         </div>
       </div>
 
-      <!-- MEDIC 221 -->
+      <!-- TRANSPORT 222 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🚑</span>
-          <span class="apparatus-img-unit">Medic 221</span>
+          <img src="images/apparatus-transport-222.jpg" alt="Transport 222, a 2014 Ford ambulance">
           <span class="apparatus-badge badge-ems">EMS</span>
-          <span class="apparatus-status status-reserve">Reserve</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">M-221</div>
-          <h3>Medic 221</h3>
-          <p class="apparatus-role">Reserve ALS ambulance available when M-22 is committed, ensuring continuous EMS coverage for the district.</p>
+          <div class="apparatus-designation">T-222</div>
+          <h3>Transport 222</h3>
+          <p class="apparatus-role">Ambulance staffed by certified EMTs and paramedics for emergency medical response and patient transport.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
               <span class="spec-label">Type</span>
-              <span class="spec-val">Type I ALS Ambulance</span>
+              <span class="spec-val">Type I Ambulance</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Level</span>
-              <span class="spec-val">Advanced Life Support</span>
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2014 Ford</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Box</span>
+              <span class="spec-val">AEV</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Crew</span>
@@ -804,10 +889,46 @@
             </div>
           </div>
           <ul class="apparatus-cap">
-            <li>Full ALS capability matching primary unit</li>
+            <li>Emergency medical response &amp; patient transport</li>
             <li>MCI &amp; multi-unit EMS response support</li>
             <li>EMS standby events &amp; community coverage</li>
-            <li>Activated when M-22 is out of service or committed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TRANSPORT 223 -->
+      <div class="apparatus-card">
+        <div class="apparatus-img">
+          <img src="images/apparatus-transport-223.jpg" alt="Transport 223, a 2014 Dodge ambulance">
+          <span class="apparatus-badge badge-ems">EMS</span>
+          <span class="apparatus-status status-front-line">Front Line</span>
+        </div>
+        <div class="apparatus-body">
+          <div class="apparatus-designation">T-223</div>
+          <h3>Transport 223</h3>
+          <p class="apparatus-role">Ambulance staffed by certified EMTs and paramedics for emergency medical response and patient transport.</p>
+          <div class="apparatus-specs">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-val">Type I Ambulance</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2014 Dodge</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Box</span>
+              <span class="spec-val">Osage</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Crew</span>
+              <span class="spec-val">EMT-B / Paramedic</span>
+            </div>
+          </div>
+          <ul class="apparatus-cap">
+            <li>Emergency medical response &amp; patient transport</li>
+            <li>MCI &amp; multi-unit EMS response support</li>
+            <li>EMS standby events &amp; community coverage</li>
           </ul>
         </div>
       </div>
@@ -815,78 +936,42 @@
     </div>
   </div>
 
-  <!-- SUPPORT & SPECIAL OPS -->
+  <!-- COMMAND & SUPPORT -->
   <div class="apparatus-section bg-ink">
     <div class="container">
       <div class="category-header">
-        <span class="label">Support & Special Operations</span>
-        <h2 class="h2">Support <span class="accent">Fleet</span></h2>
+        <span class="label">Command & Support</span>
+        <h2 class="h2">Command <span class="accent">Unit</span></h2>
       </div>
     </div>
-    <div class="apparatus-grid-2" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="apparatus-grid-2" style="max-width: 500px; margin: 0 auto; padding: 0 2.5rem; grid-template-columns: 1fr; border-top: 1px solid rgba(255,255,255,0.08);">
 
-      <!-- RESCUE 22 -->
+      <!-- COMMAND 22 -->
       <div class="apparatus-card">
         <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🛻</span>
-          <span class="apparatus-img-unit">Rescue 22</span>
-          <span class="apparatus-badge badge-support">Support</span>
+          <span class="apparatus-img-emoji">🚙</span>
+          <span class="apparatus-img-unit">Command 22</span>
+          <span class="apparatus-badge badge-support">Command</span>
           <span class="apparatus-status status-front-line">Front Line</span>
         </div>
         <div class="apparatus-body">
-          <div class="apparatus-designation">R-22</div>
-          <h3>Rescue 22</h3>
-          <p class="apparatus-role">Heavy utility and rescue vehicle carrying specialized equipment for extrication, technical rescue, and scene support operations.</p>
+          <div class="apparatus-designation">C-22</div>
+          <h3>Command 22</h3>
+          <p class="apparatus-role">Command and utility vehicle for incident command, scene coordination, and personnel transport.</p>
           <div class="apparatus-specs">
             <div class="spec-row">
               <span class="spec-label">Type</span>
-              <span class="spec-val">Heavy Utility / Rescue</span>
+              <span class="spec-val">Command / Utility Vehicle</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Role</span>
-              <span class="spec-val">Technical Rescue</span>
+              <span class="spec-label">Unit</span>
+              <span class="spec-val">2019 Dodge Durango</span>
             </div>
           </div>
           <ul class="apparatus-cap">
-            <li>Vehicle extrication with hydraulic rescue tools</li>
-            <li>Scene lighting &amp; generator support</li>
-            <li>Confined space &amp; rope rescue equipment</li>
-            <li>Command &amp; logistics support on large incidents</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- BRUSH 22 -->
-      <div class="apparatus-card">
-        <div class="apparatus-img">
-          <span class="apparatus-img-emoji">🌲</span>
-          <span class="apparatus-img-unit">Brush 22</span>
-          <span class="apparatus-badge badge-support">Support</span>
-          <span class="apparatus-status status-front-line">Front Line</span>
-        </div>
-        <div class="apparatus-body">
-          <div class="apparatus-designation">BR-22</div>
-          <h3>Brush 22</h3>
-          <p class="apparatus-role">4x4 off-road capable unit designed for grass, brush, and wildland-interface fire suppression across our rural district.</p>
-          <div class="apparatus-specs">
-            <div class="spec-row">
-              <span class="spec-label">Type</span>
-              <span class="spec-val">Brush / Wildland Unit</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-label">Drive</span>
-              <span class="spec-val">4-Wheel Drive</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-label">Tank</span>
-              <span class="spec-val">250 Gallons</span>
-            </div>
-          </div>
-          <ul class="apparatus-cap">
-            <li>Off-road access to remote fire locations</li>
-            <li>Initial brush &amp; grass fire attack</li>
-            <li>Wildland-urban interface operations</li>
-            <li>Support to state forestry on wildland fires</li>
+            <li>Incident command &amp; scene coordination</li>
+            <li>Officer &amp; personnel transport</li>
+            <li>Logistics support on large incidents</li>
           </ul>
         </div>
       </div>
