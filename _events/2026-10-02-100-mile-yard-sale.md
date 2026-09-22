@@ -1,6 +1,7 @@
 ---
 title: 100 Mile Yard Sale
 date: 2026-10-02 06:00
+end_time: 2026-10-04 17:00
 location: GFR Training & Community Center - 102 E Gretna Rd, Gretna, VA 24557
 category: fundraiser
 published: true
