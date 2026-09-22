@@ -66,79 +66,6 @@
       line-height: 1.7;
     }
 
-    /* ── BURN BAN STATUS ── */
-    .burn-ban {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .burn-ban-inner {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.75rem 0;
-    }
-
-    .burn-ban-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-
-    .burn-ban-text {
-      flex: 1;
-    }
-
-    .burn-ban-text strong {
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .burn-ban-text p {
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.55;
-    }
-
-    .burn-ban-pill {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 100px;
-      flex-shrink: 0;
-    }
-
-    /* Default: no ban active */
-    .burn-ban {
-      background: var(--charcoal);
-    }
-    .burn-ban-text strong { color: var(--ash); }
-    .burn-ban-text p { color: var(--muted); }
-    .burn-ban-pill {
-      background: rgba(255,255,255,0.06);
-      color: var(--ash);
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    /* Active ban — add class="burn-ban burn-ban--active" to the div */
-    .burn-ban--active {
-      background: rgba(191,27,35,0.1);
-      border-color: rgba(191,27,35,0.3);
-    }
-    .burn-ban--active .burn-ban-text strong { color: var(--red); }
-    .burn-ban--active .burn-ban-text p { color: var(--ash); }
-    .burn-ban--active .burn-ban-pill {
-      background: var(--red);
-      color: var(--white);
-      border-color: var(--red);
-    }
-
     /* ── SECTION HEADERS ── */
     .section-header {
       padding: 4rem 0 3rem;
@@ -447,7 +374,6 @@
       .past-item { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
       .past-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
       .past-item:last-child { border-bottom: none; }
-      .burn-ban-inner { flex-wrap: wrap; }
     }
 
     @media (max-width: 600px) {
@@ -509,22 +435,7 @@
           <span>Events & News</span>
         </div>
         <h1 class="page-hero-title">Events <em>& News</em></h1>
-        <p class="page-hero-sub">Stay up to date on department news, community events, burn bans, and announcements.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- BURN BAN STATUS -->
-  <!-- To activate a ban: set burn_ban.active to true in data/alerts.json -->
-  <div class="burn-ban" id="burn-ban-block">
-    <div class="container">
-      <div class="burn-ban-inner">
-        <span class="burn-ban-icon">🔥</span>
-        <div class="burn-ban-text">
-          <strong>Burn Ban Status</strong>
-          <p>There is no active burn ban in Pittsylvania County at this time. Always exercise caution and follow local ordinances when burning.</p>
-        </div>
-        <span class="burn-ban-pill">No Ban In Effect</span>
+        <p class="page-hero-sub">Stay up to date on department news, community events, and announcements.</p>
       </div>
     </div>
   </div>
