@@ -21,9 +21,9 @@ published: true
   .gfr-card__price span { font-size:12px; font-weight:700; letter-spacing:1.5px; color:#5A3A22; }
   .gfr-card p { margin:0; font-size:14px; line-height:1.45; color:#6B4A2E; text-wrap:pretty; }
   .gfr-card__fine { font-size:13px !important; }
-  .gfr-card__cta { margin-top:auto; display:block; text-align:center; background:#2C2A8C; color:#F6EFE4; text-decoration:none; font-size:15px; font-weight:700; padding:12px 16px; border-radius:6px; }
-  .gfr-card__cta:hover { background:#23217A; color:#FFFFFF; }
-  .gfr-card a { color:#2C2A8C; font-weight:700; white-space:nowrap; }
+  .gfr-card p a { color:#2C2A8C; font-weight:700; white-space:nowrap; }
+  .gfr-card__cta, .gfr-card a.gfr-card__cta { margin-top:auto; display:block; text-align:center; background:#2C2A8C; color:#F6EFE4; text-decoration:none; font-size:15px; font-weight:700; padding:12px 16px; border-radius:6px; }
+  .gfr-card a.gfr-card__cta:hover { background:#23217A; color:#FFFFFF; }
   .gfr-card strong { color:#B4562A; }
 </style>
 
