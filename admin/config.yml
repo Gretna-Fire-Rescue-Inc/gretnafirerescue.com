@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Gretna-Fire-Rescue-Inc/gretnafirerescue.com
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  base_url: https://portal.gretnafirerescue.com
+  auth_endpoint: oauth_authorize.php
 
 # Media uploads
 media_folder: "images/uploads"
