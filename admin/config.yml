@@ -40,7 +40,16 @@ collections:
         date_format: "YYYY-MM-DD"
         time_format: "HH:mm"
         format: "YYYY-MM-DD HH:mm"
-        hint: "Date and time of the event"
+        hint: "Start date and time of the event"
+
+      - label: "End Time"
+        name: "end_time"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DD HH:mm"
+        required: false
+        hint: "Optional — when the event ends. Leave blank to just show the start time."
 
       - label: "Location"
         name: "location"

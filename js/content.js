@@ -96,11 +96,13 @@
 
   function eventCard(e) {
     const d = toDate(e.data.date);
+    const endD = toDate(e.data.end_time);
     const title = escapeHtml(e.data.title || 'Untitled Event');
     const catKey = String(e.data.category || 'other').toLowerCase();
     const catClass = EVENT_CAT_CLASS[catKey] || 'cat-community';
     const catLabel = EVENT_CAT_LABEL[catKey] || 'Event';
     const desc = renderBody(e.body);
+    const timeLabel = endD ? `${formatTime(d)} – ${formatTime(endD)}` : formatTime(d);
     const loc = e.data.location
       ? `<div class="event-meta-row"><span>📍</span> ${escapeHtml(e.data.location)}</div>`
       : '';
@@ -118,7 +120,7 @@
           <h3>${title}</h3>
           <div class="event-desc">${desc}</div>
           <div class="event-meta">
-            <div class="event-meta-row"><span>🕐</span> ${formatTime(d)}</div>
+            <div class="event-meta-row"><span>🕐</span> ${timeLabel}</div>
             ${loc}
           </div>
         </div>
