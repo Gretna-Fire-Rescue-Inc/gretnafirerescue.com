@@ -1,6 +1,7 @@
 ---
 title: Stew Fundraiser
 date: 2026-10-17 11:00
+end_time: 1906-10-17 15:00
 category: fundraiser
 published: true
 ---
