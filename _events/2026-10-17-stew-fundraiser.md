@@ -22,8 +22,9 @@ published: true
   .gfr-card p { margin:0; font-size:14px; line-height:1.45; color:#6B4A2E; text-wrap:pretty; }
   .gfr-card__fine { font-size:13px !important; }
   .gfr-card p a { color:#2C2A8C; font-weight:700; white-space:nowrap; }
-  .gfr-card__cta, .gfr-card a.gfr-card__cta { margin-top:auto; display:block; text-align:center; background:#2C2A8C; color:#F6EFE4; text-decoration:none; font-size:15px; font-weight:700; padding:12px 16px; border-radius:6px; }
-  .gfr-card a.gfr-card__cta:hover { background:#23217A; color:#FFFFFF; }
+  .gfr-card__cta, .gfr-card a.gfr-card__cta, .gfr-card a.gfr-card__cta:link, .gfr-card a.gfr-card__cta:visited { margin-top:auto; display:block; text-align:center; background:#2C2A8C !important; color:#F6EFE4 !important; text-decoration:none !important; font-size:15px; font-weight:700; padding:12px 16px; border-radius:6px; text-indent:0 !important; opacity:1 !important; visibility:visible !important; }
+  .gfr-card a.gfr-card__cta:hover, .gfr-card a.gfr-card__cta:focus { background:#23217A !important; color:#FFFFFF !important; }
+  .gfr-card__cta span { color:inherit !important; }
   .gfr-card strong { color:#B4562A; }
 </style>
 
@@ -45,7 +46,7 @@ published: true
     </div>
     <div class="gfr-card__price"><b>$10</b><span>PER QUART</span></div>
     <p>Our famous stew, cooked fresh. Fried pies available day of while supplies last.</p>
-    <a class="gfr-card__cta" href="https://portal.gretnafirerescue.com/stew_order.php">Pre-order your stew</a>
+    <a class="gfr-card__cta" href="https://portal.gretnafirerescue.com/stew_order.php" style="color:#F6EFE4 !important;background:#2C2A8C;text-decoration:none;"><span style="color:#F6EFE4 !important;">Pre-order your stew</span></a>
     <p class="gfr-card__fine">Use the link above or contact <strong>Derek Witcher</strong> at <a href="tel:+14342383858">434-238-3858</a> or <strong>GFR</strong> at <a href="tel:+14346562621">434-656-2621</a>. If we are unavailable to answer, please leave a voicemail or send a text.</p>
   </div>
 </article>
