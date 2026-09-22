@@ -5,108 +5,47 @@ location: Gretna Fire & Rescue
 category: fundraiser
 published: true
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark">
-<title>Stew &amp; Pie Sale — Pre-Orders Only</title>
-<!--[if mso]>
-<style>body,table,td,a{font-family:Arial,Helvetica,sans-serif !important;}</style>
-<![endif]-->
+<!-- Gretna Fire & Rescue — Stew & Pie Sale event card -->
+<!-- Paste into your Upcoming Events grid. Card caps at 370px and fills its grid cell. -->
 <style>
-  @media only screen and (max-width:620px){
-    .px{padding-left:20px !important;padding-right:20px !important;}
-    .h1{font-size:44px !important;line-height:46px !important;}
-    .h2{font-size:30px !important;line-height:34px !important;}
-    .stack{display:block !important;width:100% !important;}
-    .datebig{font-size:64px !important;line-height:64px !important;}
-  }
+  .gfr-card { background:#FFFFFF; border:1px solid #D9C6AC; border-radius:6px; overflow:hidden; display:flex; flex-direction:column; max-width:370px; font-family:'Source Sans 3',Helvetica,Arial,sans-serif; }
+  .gfr-card__head { background:#B4562A; display:flex; align-items:center; gap:14px; padding:16px 24px; }
+  .gfr-card__day { font-size:40px; line-height:0.9; font-weight:900; color:#2C2A8C; }
+  .gfr-card__mon { font-size:12px; font-weight:700; letter-spacing:2px; color:#F6EFE4; padding-top:3px; }
+  .gfr-card__flag { font-size:24px; font-weight:900; letter-spacing:1.5px; color:#F6EFE4; line-height:1.35; }
+  .gfr-card__body { padding:18px 24px 22px; display:flex; flex-direction:column; gap:9px; flex:1 1 auto; }
+  .gfr-card__title { margin:0; font-family:'Playfair Display',Georgia,serif; font-style:italic; font-weight:800; font-size:26px; line-height:1.05; color:#B4562A; }
+  .gfr-card__meta { font-size:14px; line-height:1.45; color:#5A3A22; }
+  .gfr-card__price { display:flex; align-items:baseline; gap:7px; }
+  .gfr-card__price b { font-size:24px; font-weight:900; color:#B4562A; line-height:1; }
+  .gfr-card__price span { font-size:12px; font-weight:700; letter-spacing:1.5px; color:#5A3A22; }
+  .gfr-card p { margin:0; font-size:14px; line-height:1.45; color:#6B4A2E; text-wrap:pretty; }
+  .gfr-card__fine { font-size:13px !important; }
+  .gfr-card__cta { margin-top:auto; display:block; text-align:center; background:#2C2A8C; color:#F6EFE4; text-decoration:none; font-size:15px; font-weight:700; padding:12px 16px; border-radius:6px; }
+  .gfr-card__cta:hover { background:#23217A; color:#FFFFFF; }
+  .gfr-card a { color:#2C2A8C; font-weight:700; white-space:nowrap; }
+  .gfr-card strong { color:#B4562A; }
 </style>
-</head>
-<body style="margin:0;padding:0;background-color:#C8722A;">
-<span style="display:none;font-size:1px;color:#C8722A;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">Our famous stew, $10 a quart — pre-orders only. Pick up Saturday, October 17, 11 AM to 3 PM.</span>
 
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#C8722A;">
-<tr><td align="center" style="padding:24px 12px 32px 12px;">
-
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px;max-width:600px;">
-
-  <!-- Header -->
-  <tr><td align="center" class="px" style="background-color:#F0E7DB;padding:34px 40px 10px 40px;">
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:18px;letter-spacing:3px;text-transform:uppercase;color:#8A4A22;mso-line-height-rule:exactly;">Gretna Fire &amp; Rescue</div>
-    <div class="h1" style="font-family:Georgia,'Times New Roman',serif;font-size:60px;line-height:58px;color:#B4562A;font-style:italic;font-weight:bold;padding-top:10px;mso-line-height-rule:exactly;">Stew</div>
-    <div class="h2" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:40px;color:#2C2A8C;font-style:italic;font-weight:bold;mso-line-height-rule:exactly;">&amp; Pie Sale</div>
-  </td></tr>
-
-  <!-- Pre-orders banner -->
-  <tr><td align="center" style="background-color:#F0E7DB;padding:22px 40px 30px 40px;">
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-      <tr><td align="center" bgcolor="#5A3A22" style="background-color:#5A3A22;padding:14px 18px;border-radius:4px;">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:22px;line-height:26px;font-weight:bold;letter-spacing:2px;color:#F6EFE4;mso-line-height-rule:exactly;">PRE-ORDERS ONLY!</div>
-      </td></tr>
-    </table>
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;color:#5A3A22;padding-top:18px;mso-line-height-rule:exactly;">Mark your calendars. We will be cooking up our famous stew on Saturday, October 17th &mdash; and we are only accepting pre-orders.</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">
-      <tr><td align="center" style="border:3px solid #B4562A;border-radius:6px;padding:14px 30px;">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:40px;line-height:42px;font-weight:bold;color:#B4562A;mso-line-height-rule:exactly;">$10</div>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:20px;font-weight:bold;letter-spacing:3px;color:#5A3A22;padding-top:4px;mso-line-height-rule:exactly;">PER QUART</div>
-      </td></tr>
-    </table>
-  </td></tr>
-
-  <!-- Date block -->
-  <tr><td style="background-color:#B4562A;padding:26px 40px;" class="px">
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-      <tr>
-        <td class="stack" width="180" align="center" valign="middle" style="width:180px;padding-bottom:6px;">
-          <div class="datebig" style="font-family:Arial,Helvetica,sans-serif;font-size:76px;line-height:72px;font-weight:bold;color:#2C2A8C;mso-line-height-rule:exactly;">17</div>
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:24px;font-weight:bold;letter-spacing:4px;color:#F6EFE4;mso-line-height-rule:exactly;">OCT 2026</div>
-        </td>
-        <td class="stack" align="center" valign="middle" style="padding-left:16px;">
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:28px;font-weight:bold;letter-spacing:1px;color:#F6EFE4;mso-line-height-rule:exactly;">PICK UP DAY OF!</div>
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;color:#F7DCC2;padding-top:8px;mso-line-height-rule:exactly;">Saturday, October 17, 2026<br>Pick up 11 AM &ndash; 3 PM<br>122 E Gretna Rd, Gretna, VA</div>
-        </td>
-      </tr>
-    </table>
-  </td></tr>
-
-  <!-- CTA -->
-  <tr><td align="center" class="px" style="background-color:#F0E7DB;padding:32px 40px 8px 40px;">
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;color:#8A4A22;mso-line-height-rule:exactly;">Place your order</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:16px;">
-      <tr><td align="center" bgcolor="#2C2A8C" style="background-color:#2C2A8C;border-radius:6px;">
-        <a href="https://portal.gretnafirerescue.com/stew_order.php" style="display:block;padding:16px 34px;font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:22px;font-weight:bold;color:#F6EFE4;text-decoration:none;letter-spacing:1px;">Pre-order your stew</a>
-      </td></tr>
-    </table>
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;color:#5A3A22;padding-top:18px;mso-line-height-rule:exactly;">Fill out the short order form &mdash; or call / text <strong style="color:#B4562A;">Derek Witcher</strong> at <a href="tel:+14342383858" style="color:#2C2A8C;text-decoration:underline;font-weight:bold;">434-238-3858</a> or <strong style="color:#B4562A;">GFR</strong> at <a href="tel:+14346562621" style="color:#2C2A8C;text-decoration:underline;font-weight:bold;">434-656-2621</a>.<br>If we are unavailable to answer, please leave a voicemail or send a text.</div>
-  </td></tr>
-
-  <!-- Support line -->
-  <tr><td align="center" class="px" style="background-color:#F0E7DB;padding:24px 40px 34px 40px;">
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-      <tr><td height="1" style="background-color:#D9C6AC;font-size:1px;line-height:1px;">&nbsp;</td></tr>
-    </table>
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;margin-top:22px;">
-      <tr><td align="center" bgcolor="#E4D5C0" style="background-color:#E4D5C0;padding:18px 22px;border-radius:4px;">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:22px;font-weight:bold;letter-spacing:1px;color:#5A3A22;mso-line-height-rule:exactly;">FRIED PIES &amp; PIES</div>
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;color:#6B4A2E;padding-top:6px;mso-line-height-rule:exactly;">Available day of while supplies last &mdash; no pre-order, first come first serve.</div>
-      </td></tr>
-    </table>
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:26px;font-style:italic;color:#8A4A22;padding-top:22px;mso-line-height-rule:exactly;">We appreciate your continued support.</div>
-  </td></tr>
-
-  <!-- Footer -->
-  <tr><td align="center" style="background-color:#5A3A22;padding:24px 40px;" class="px">
-    <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:20px;color:#E7D6C0;mso-line-height-rule:exactly;">
-      Gretna Fire &amp; Rescue &middot; 122 E Gretna Rd, Gretna, VA 24557<br>
-      <a href="https://www.gretnafirerescue.com" style="color:#F0B77A;text-decoration:underline;">gretnafirerescue.com</a>
+<article class="gfr-card">
+  <div class="gfr-card__head">
+    <div style="flex:0 0 auto;text-align:center;">
+      <div class="gfr-card__day">17</div>
+      <div class="gfr-card__mon">OCT 2026</div>
     </div>
+    <div class="gfr-card__flag">PRE-ORDERS ONLY!</div>
+  </div>
 
-</table>
-</td></tr>
-</table>
-</body>
-</html>
+  <div class="gfr-card__body">
+    <h3 class="gfr-card__title">Stew &amp; Pie Sale</h3>
+    <div class="gfr-card__meta">
+      Saturday, October 17, 2026<br>
+      Pick up 11 AM &ndash; 3 PM<br>
+      122 E Gretna Rd, Gretna, VA
+    </div>
+    <div class="gfr-card__price"><b>$10</b><span>PER QUART</span></div>
+    <p>Our famous stew, cooked fresh. Fried pies available day of while supplies last.</p>
+    <a class="gfr-card__cta" href="https://portal.gretnafirerescue.com/stew_order.php">Pre-order your stew</a>
+    <p class="gfr-card__fine">Use the link above or contact <strong>Derek Witcher</strong> at <a href="tel:+14342383858">434-238-3858</a> or <strong>GFR</strong> at <a href="tel:+14346562621">434-656-2621</a>. If we are unavailable to answer, please leave a voicemail or send a text.</p>
+  </div>
+</article>
