@@ -7,7 +7,6 @@
   <title>Gretna Fire & Rescue | Station 22</title>
   <link rel="icon" type="image/png" href="images/patch.png">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/banner.css">
   <style>
 
     /* ── HERO ── */
@@ -409,9 +408,6 @@
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div id="announcement-banner"></div>
-
   <!-- NAV -->
   <nav class="nav scrolled">
     <a href="index.html" class="nav-brand">
@@ -700,11 +696,5 @@
 
   <script src="js/main.js"></script>
   <script src="js/content.js"></script>
-  <script>
-    const _b = document.getElementById("announcement-banner");
-    if (_b) new MutationObserver(() => {
-      document.body.classList.toggle("has-banner", _b.style.display !== "none" && _b.innerHTML !== "");
-    }).observe(_b, { attributes: true, childList: true });
-  </script>
 </body>
 </html>

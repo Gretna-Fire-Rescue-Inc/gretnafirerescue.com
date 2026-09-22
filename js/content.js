@@ -1,8 +1,8 @@
 /* ============================================================
    GRETNA FIRE & RESCUE — content.js
-   Renders events, news, and announcements published through the
-   /admin CMS (markdown files in _events/, _news/, _announcements/)
-   directly onto the public pages. No build step — fetched live
+   Renders events and news published through the /admin CMS
+   (markdown files in _events/, _news/) directly onto the public
+   pages. No build step — fetched live
    from GitHub at page load. Safely no-ops on pages that don't
    have the matching sections.
    ============================================================ */
@@ -19,6 +19,15 @@
     const d = document.createElement('div');
     d.textContent = str == null ? '' : String(str);
     return d.innerHTML;
+  }
+
+  // Renders a CMS body field to HTML. Markdown syntax (bold, links, lists,
+  // etc.) is converted normally; raw HTML typed directly into the field is
+  // passed through as-is (standard CommonMark behavior) — lets editors choose
+  // per-post between the Rich Text editor and hand-written HTML.
+  function renderBody(str) {
+    if (!str) return '';
+    return (typeof marked !== 'undefined') ? marked.parse(str) : escapeHtml(str);
   }
 
   function parseFrontmatter(raw) {
@@ -52,6 +61,10 @@
 
   async function fetchCollection(folder) {
     const listRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${folder}?ref=${BRANCH}`);
+    // GitHub doesn't track empty directories, so a folder with every entry
+    // deleted 404s here rather than returning an empty list — treat that the
+    // same as "no entries yet" instead of an error.
+    if (listRes.status === 404) return [];
     if (!listRes.ok) throw new Error('list failed: ' + folder);
     const files = (await listRes.json()).filter(f => f.name && f.name.endsWith('.md'));
     return Promise.all(files.map(async f => {
@@ -87,7 +100,7 @@
     const catKey = String(e.data.category || 'other').toLowerCase();
     const catClass = EVENT_CAT_CLASS[catKey] || 'cat-community';
     const catLabel = EVENT_CAT_LABEL[catKey] || 'Event';
-    const desc = escapeHtml((e.body || '').split('\n\n')[0]);
+    const desc = renderBody(e.body);
     const loc = e.data.location
       ? `<div class="event-meta-row"><span>📍</span> ${escapeHtml(e.data.location)}</div>`
       : '';
@@ -103,7 +116,7 @@
         <div class="event-body">
           <span class="event-category ${catClass}">${catLabel}</span>
           <h3>${title}</h3>
-          <p>${desc}</p>
+          <div class="event-desc">${desc}</div>
           <div class="event-meta">
             <div class="event-meta-row"><span>🕐</span> ${formatTime(d)}</div>
             ${loc}
@@ -176,7 +189,7 @@
   function newsItem(n) {
     const d = toDate(n.data.date);
     const title = escapeHtml(n.data.title || 'Untitled');
-    const summary = escapeHtml(n.data.summary || (n.body || '').split('\n\n')[0]);
+    const summary = n.data.summary ? `<p>${escapeHtml(n.data.summary)}</p>` : renderBody(n.body);
     const label = NEWS_TAG_LABEL[String(n.data.category || 'news').toLowerCase()] || 'News';
     const dateLabel = d ? `${MONTHS[d.getMonth()]} ${d.getFullYear()}` : '';
     return `
@@ -184,7 +197,7 @@
         <span class="news-date">${dateLabel}</span>
         <div class="news-body">
           <h3>${title}</h3>
-          <p>${summary}</p>
+          <div class="news-summary">${summary}</div>
         </div>
         <span class="news-tag tag-news">${label}</span>
       </div>`;
@@ -207,54 +220,6 @@
     }
   }
 
-  /* ── ANNOUNCEMENT BANNER ── */
-
-  async function renderAnnouncements() {
-    const container = document.getElementById('announcement-banner');
-    if (!container) return;
-
-    try {
-      const now = new Date();
-      const anns = (await fetchCollection('_announcements'))
-        .filter(a => {
-          if (a.data.active !== true) return false;
-          const exp = toDate(a.data.expires);
-          return !(exp && exp < now);
-        })
-        .sort((a, b) => toDate(b.data.date) - toDate(a.data.date))
-        .slice(0, 3);
-
-      if (!anns.length) {
-        container.style.display = 'none';
-        return;
-      }
-
-      const colors = { danger: '#BF1B23', warning: '#d97706', info: '#2563eb' };
-      const icons  = { danger: '🚨', warning: '⚠️', info: 'ℹ️' };
-
-      container.innerHTML = anns.map((a, i) => {
-        const type = a.data.type || 'info';
-        return `
-        <div class="ann-item ann-${type}" style="background:${colors[type] || colors.info};">
-          <div class="ann-inner">
-            <span class="ann-icon">${icons[type] || icons.info}</span>
-            <span class="ann-message">${escapeHtml(a.data.title)}</span>
-          </div>
-          ${i === 0 ? `<button class="ann-close" onclick="dismissBanner()" aria-label="Dismiss">✕</button>` : ''}
-        </div>`;
-      }).join('');
-
-      container.style.display = 'block';
-    } catch (e) {
-      container.style.display = 'none';
-    }
-  }
-
-  window.dismissBanner = function () {
-    const b = document.getElementById('announcement-banner');
-    if (b) b.style.display = 'none';
-  };
-
   /* ── AUTO-UPDATING "YEARS SINCE" STATS ── */
   function renderYearsSince() {
     document.querySelectorAll('[data-years-since]').forEach(el => {
@@ -268,6 +233,5 @@
   renderYearsSince();
   renderEvents();
   renderNews();
-  renderAnnouncements();
 
 })();

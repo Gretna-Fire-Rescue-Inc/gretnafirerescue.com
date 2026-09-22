@@ -7,7 +7,6 @@
   <title>Events & News | Gretna Fire & Rescue</title>
   <link rel="icon" type="image/png" href="images/patch.png">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/banner.css">
   <style>
 
     /* ── PAGE HERO ── */
@@ -248,7 +247,7 @@
       line-height: 1.15;
     }
 
-    .event-body p {
+    .event-desc {
       font-size: 0.83rem;
       font-weight: 300;
       color: var(--ash);
@@ -256,6 +255,13 @@
       margin-bottom: 1.25rem;
       flex: 1;
     }
+
+    .event-desc p { margin: 0 0 0.75rem; }
+    .event-desc p:last-child { margin-bottom: 0; }
+    .event-desc a { color: var(--red); text-decoration: underline; }
+    .event-desc strong { color: var(--white); font-weight: 600; }
+    .event-desc ul, .event-desc ol { margin: 0 0 0.75rem 1.2rem; }
+    .event-desc img { max-width: 100%; border-radius: var(--radius); margin: 0.5rem 0; display: block; }
 
     .event-meta {
       display: flex;
@@ -321,12 +327,19 @@
       margin-bottom: 0.4rem;
     }
 
-    .news-body p {
+    .news-summary {
       font-size: 0.85rem;
       font-weight: 300;
       color: var(--ash);
       line-height: 1.65;
     }
+
+    .news-summary p { margin: 0 0 0.5rem; }
+    .news-summary p:last-child { margin-bottom: 0; }
+    .news-summary a { color: var(--red); text-decoration: underline; }
+    .news-summary strong { color: var(--white); font-weight: 600; }
+    .news-summary ul, .news-summary ol { margin: 0 0 0.5rem 1.2rem; }
+    .news-summary img { max-width: 100%; border-radius: var(--radius); margin: 0.5rem 0; display: block; }
 
     .news-tag {
       font-family: var(--font-display);
@@ -446,9 +459,6 @@
   </style>
 </head>
 <body>
-
-  <!-- ANNOUNCEMENT BANNER -->
-  <div id="announcement-banner"></div>
 
   <!-- NAV -->
   <nav class="nav scrolled">
@@ -616,12 +626,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
   <script src="js/content.js"></script>
-  <script>
-    const _b = document.getElementById("announcement-banner");
-    if (_b) new MutationObserver(() => {
-      document.body.classList.toggle("has-banner", _b.style.display !== "none" && _b.innerHTML !== "");
-    }).observe(_b, { attributes: true, childList: true });
-  </script>
 </body>
 </html>
