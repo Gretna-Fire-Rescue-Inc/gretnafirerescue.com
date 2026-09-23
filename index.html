@@ -199,6 +199,96 @@
       line-height: 1.6;
     }
 
+    /* ── CALL STATS ── */
+    .call-stats-section {
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 4rem 0;
+    }
+
+    .call-stats-header { margin-bottom: 2.5rem; }
+
+    .call-stats-summary {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .call-stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .call-stat-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .call-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      height: 160px;
+      padding: 0 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .call-bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      gap: 0.4rem;
+    }
+
+    .call-bar-val {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ash);
+    }
+
+    .call-bar {
+      width: 100%;
+      max-width: 42px;
+      background: linear-gradient(180deg, var(--red), var(--red-dark));
+      border-radius: 3px 3px 0 0;
+      min-height: 3px;
+      transition: height 0.4s var(--ease);
+    }
+
+    .call-bar-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .call-stats-updated {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .call-bar-label { font-size: 0.55rem; }
+      .call-chart { gap: 0.5rem; }
+    }
+
     /* ── MISSION STRIP ── */
     .mission-strip {
       background: var(--charcoal);
@@ -637,6 +727,28 @@
     </div>
   </div>
 
+  <!-- CALL STATS -->
+  <div class="call-stats-section" id="callStatsSection" style="display:none;">
+    <div class="container">
+      <div class="call-stats-header">
+        <span class="label">Department Activity</span>
+        <h2 class="h2">Answering The <span class="accent">Call</span></h2>
+      </div>
+      <div class="call-stats-summary">
+        <div>
+          <div class="call-stat-num" id="csMonth">—</div>
+          <div class="call-stat-label" id="csMonthLabel">This Month</div>
+        </div>
+        <div>
+          <div class="call-stat-num" id="csYTD">—</div>
+          <div class="call-stat-label" id="csYTDLabel">Year to Date</div>
+        </div>
+      </div>
+      <div class="call-chart" id="callChart"></div>
+      <p class="call-stats-updated" id="csUpdated"></p>
+    </div>
+  </div>
+
   <!-- MISSION STRIP -->
   <div class="mission-strip">
     <div class="container">
@@ -858,6 +970,53 @@
             if (window.turnstile) window.turnstile.reset();
           });
       });
+    })();
+  </script>
+
+  <script>
+    // Live call-stats widget. Only ever reads aggregate fields (month/ytd/
+    // monthly totals) from this API — it also returns per-member leaderboard
+    // data (fire_runners/ems_runners) that must never be shown publicly, so
+    // those fields are intentionally left untouched here.
+    (function () {
+      const section = document.getElementById('callStatsSection');
+      if (!section) return;
+
+      fetch('https://portal.gretnafirerescue.com/api_call_counts.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data.status !== 'ok') return;
+
+          document.getElementById('csMonth').textContent = data.month.total.toLocaleString();
+          document.getElementById('csMonthLabel').textContent = data.month_label;
+          document.getElementById('csYTD').textContent = data.ytd.total.toLocaleString();
+          document.getElementById('csYTDLabel').textContent = data.year + ' Year to Date';
+
+          const months = data.monthly || [];
+          const maxTotal = Math.max(1, ...months.map(m => m.total));
+          const chart = document.getElementById('callChart');
+          chart.innerHTML = months.map(m => {
+            const pct = Math.max(4, Math.round((m.total / maxTotal) * 100));
+            const abbr = (m.month_label || '').slice(0, 3);
+            return `
+              <div class="call-bar-col">
+                <span class="call-bar-val">${m.total}</span>
+                <div class="call-bar" style="height:${pct}%;"></div>
+                <span class="call-bar-label">${abbr}</span>
+              </div>`;
+          }).join('');
+
+          if (data.as_of) {
+            const d = new Date(String(data.as_of).replace(' ', 'T'));
+            if (!isNaN(d)) {
+              document.getElementById('csUpdated').textContent =
+                'Updated ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            }
+          }
+
+          section.style.display = 'block';
+        })
+        .catch(() => { /* leave section hidden on failure */ });
     })();
   </script>
 </body>
