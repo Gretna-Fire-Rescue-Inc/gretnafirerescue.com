@@ -284,9 +284,15 @@
     }
 
     .call-table tr:last-child td { border-bottom: none; }
-    .call-table tr.is-current td { background: rgba(191,27,35,0.07); }
+    .call-table th.is-current,
+    .call-table td.is-current { background: rgba(191,27,35,0.08); }
 
-    .call-table .month-name { color: var(--white); font-weight: 500; }
+    .call-table td:first-child {
+      border-right: 1px solid rgba(255,255,255,0.1);
+      background: var(--charcoal);
+    }
+
+    .call-table .row-label { font-weight: 700; }
     .call-table .col-fire { color: var(--red); font-weight: 600; font-family: var(--font-display); }
     .call-table .col-ems { color: #5AAFE0; font-weight: 600; font-family: var(--font-display); }
     .call-table .col-total { color: var(--white); font-weight: 700; font-family: var(--font-display); }
@@ -768,7 +774,7 @@
       <div class="call-table-wrap">
         <table class="call-table">
           <thead>
-            <tr><th>Month</th><th>Fire</th><th>EMS</th><th>Total</th></tr>
+            <tr id="callTableHead"><th></th></tr>
           </thead>
           <tbody id="callTableBody"></tbody>
         </table>
@@ -1025,14 +1031,22 @@
           document.getElementById('csYTDEMS').textContent = data.ytd.ems.toLocaleString();
 
           const months = data.monthly || [];
-          const tbody = document.getElementById('callTableBody');
-          tbody.innerHTML = months.map((m, i) => `
-            <tr class="${i === months.length - 1 ? 'is-current' : ''}">
-              <td class="month-name">${m.month_label}</td>
-              <td class="col-fire">${m.fire.toLocaleString()}</td>
-              <td class="col-ems">${m.ems.toLocaleString()}</td>
-              <td class="col-total">${m.total.toLocaleString()}</td>
-            </tr>`).join('');
+          const lastIdx = months.length - 1;
+
+          const head = document.getElementById('callTableHead');
+          head.innerHTML = '<th></th>' + months.map((m, i) =>
+            `<th class="${i === lastIdx ? 'is-current' : ''}">${(m.month_label || '').slice(0, 3)}</th>`
+          ).join('');
+
+          function row(label, cls, key) {
+            return `<tr>
+              <td class="row-label ${cls}">${label}</td>
+              ${months.map((m, i) => `<td class="${cls} ${i === lastIdx ? 'is-current' : ''}">${m[key].toLocaleString()}</td>`).join('')}
+            </tr>`;
+          }
+
+          document.getElementById('callTableBody').innerHTML =
+            row('Fire', 'col-fire', 'fire') + row('EMS', 'col-ems', 'ems') + row('Total', 'col-total', 'total');
 
           if (data.as_of) {
             const d = new Date(String(data.as_of).replace(' ', 'T'));
