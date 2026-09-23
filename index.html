@@ -246,66 +246,50 @@
     .split-fire { color: var(--red); }
     .split-ems { color: #5AAFE0; }
 
-    .call-chart-legend {
-      display: flex;
-      gap: 1.25rem;
-      margin-bottom: 1rem;
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .call-table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
     }
 
-    .call-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 1rem;
-      height: 160px;
-      padding: 0 0.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .call-bar-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      height: 100%;
-      gap: 0.4rem;
-    }
-
-    .call-bar-val {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--ash);
-    }
-
-    .call-bar-stack {
+    .call-table {
       width: 100%;
-      max-width: 42px;
-      display: flex;
-      flex-direction: column;
-      border-radius: 3px 3px 0 0;
-      overflow: hidden;
-      min-height: 3px;
-      transition: height 0.4s var(--ease);
+      border-collapse: collapse;
+      font-family: var(--font-body);
     }
 
-    .call-bar-seg-ems { background: #0A5C91; }
-    .call-bar-seg-fire { background: linear-gradient(180deg, var(--red), var(--red-dark)); }
-
-    .call-bar-label {
+    .call-table th {
       font-family: var(--font-display);
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.5rem;
+      text-align: left;
+      padding: 0.8rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: var(--charcoal);
+      white-space: nowrap;
     }
+
+    .call-table th:not(:first-child),
+    .call-table td:not(:first-child) { text-align: right; }
+
+    .call-table td {
+      padding: 0.65rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--ash);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      white-space: nowrap;
+    }
+
+    .call-table tr:last-child td { border-bottom: none; }
+    .call-table tr.is-current td { background: rgba(191,27,35,0.07); }
+
+    .call-table .month-name { color: var(--white); font-weight: 500; }
+    .call-table .col-fire { color: var(--red); font-weight: 600; font-family: var(--font-display); }
+    .call-table .col-ems { color: #5AAFE0; font-weight: 600; font-family: var(--font-display); }
+    .call-table .col-total { color: var(--white); font-weight: 700; font-family: var(--font-display); }
 
     .call-stats-updated {
       font-size: 0.75rem;
@@ -314,8 +298,7 @@
     }
 
     @media (max-width: 600px) {
-      .call-bar-label { font-size: 0.55rem; }
-      .call-chart { gap: 0.5rem; }
+      .call-table th, .call-table td { padding: 0.6rem 0.85rem; font-size: 0.78rem; }
       .call-stat-split { gap: 0.6rem; flex-wrap: wrap; }
     }
 
@@ -782,11 +765,14 @@
           </div>
         </div>
       </div>
-      <div class="call-chart-legend">
-        <span class="split-fire">■ Fire</span>
-        <span class="split-ems">■ EMS</span>
+      <div class="call-table-wrap">
+        <table class="call-table">
+          <thead>
+            <tr><th>Month</th><th>Fire</th><th>EMS</th><th>Total</th></tr>
+          </thead>
+          <tbody id="callTableBody"></tbody>
+        </table>
       </div>
-      <div class="call-chart" id="callChart"></div>
       <p class="call-stats-updated" id="csUpdated"></p>
     </div>
   </div>
@@ -1039,21 +1025,14 @@
           document.getElementById('csYTDEMS').textContent = data.ytd.ems.toLocaleString();
 
           const months = data.monthly || [];
-          const maxTotal = Math.max(1, ...months.map(m => m.total));
-          const chart = document.getElementById('callChart');
-          chart.innerHTML = months.map(m => {
-            const pct = Math.max(4, Math.round((m.total / maxTotal) * 100));
-            const abbr = (m.month_label || '').slice(0, 3);
-            return `
-              <div class="call-bar-col">
-                <span class="call-bar-val">${m.total}</span>
-                <div class="call-bar-stack" style="height:${pct}%;">
-                  <div class="call-bar-seg-ems" style="flex-grow:${m.ems || 0};" title="${m.ems} EMS"></div>
-                  <div class="call-bar-seg-fire" style="flex-grow:${m.fire || 0};" title="${m.fire} Fire"></div>
-                </div>
-                <span class="call-bar-label">${abbr}</span>
-              </div>`;
-          }).join('');
+          const tbody = document.getElementById('callTableBody');
+          tbody.innerHTML = months.map((m, i) => `
+            <tr class="${i === months.length - 1 ? 'is-current' : ''}">
+              <td class="month-name">${m.month_label}</td>
+              <td class="col-fire">${m.fire.toLocaleString()}</td>
+              <td class="col-ems">${m.ems.toLocaleString()}</td>
+              <td class="col-total">${m.total.toLocaleString()}</td>
+            </tr>`).join('');
 
           if (data.as_of) {
             const d = new Date(String(data.as_of).replace(' ', 'T'));
