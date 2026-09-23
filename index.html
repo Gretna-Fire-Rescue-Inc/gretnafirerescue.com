@@ -233,6 +233,30 @@
       color: var(--ash);
     }
 
+    .call-stat-split {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .split-fire { color: var(--red); }
+    .split-ems { color: #5AAFE0; }
+
+    .call-chart-legend {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
     .call-chart {
       display: flex;
       align-items: flex-end;
@@ -259,14 +283,19 @@
       color: var(--ash);
     }
 
-    .call-bar {
+    .call-bar-stack {
       width: 100%;
       max-width: 42px;
-      background: linear-gradient(180deg, var(--red), var(--red-dark));
+      display: flex;
+      flex-direction: column;
       border-radius: 3px 3px 0 0;
+      overflow: hidden;
       min-height: 3px;
       transition: height 0.4s var(--ease);
     }
+
+    .call-bar-seg-ems { background: #0A5C91; }
+    .call-bar-seg-fire { background: linear-gradient(180deg, var(--red), var(--red-dark)); }
 
     .call-bar-label {
       font-family: var(--font-display);
@@ -287,6 +316,7 @@
     @media (max-width: 600px) {
       .call-bar-label { font-size: 0.55rem; }
       .call-chart { gap: 0.5rem; }
+      .call-stat-split { gap: 0.6rem; flex-wrap: wrap; }
     }
 
     /* ── MISSION STRIP ── */
@@ -735,14 +765,26 @@
         <h2 class="h2">Answering The <span class="accent">Call</span></h2>
       </div>
       <div class="call-stats-summary">
-        <div>
+        <div class="call-stat">
           <div class="call-stat-num" id="csMonth">—</div>
           <div class="call-stat-label" id="csMonthLabel">This Month</div>
+          <div class="call-stat-split">
+            <span class="split-fire">🔥 <span id="csMonthFire">—</span> Fire</span>
+            <span class="split-ems">🚑 <span id="csMonthEMS">—</span> EMS</span>
+          </div>
         </div>
-        <div>
+        <div class="call-stat">
           <div class="call-stat-num" id="csYTD">—</div>
           <div class="call-stat-label" id="csYTDLabel">Year to Date</div>
+          <div class="call-stat-split">
+            <span class="split-fire">🔥 <span id="csYTDFire">—</span> Fire</span>
+            <span class="split-ems">🚑 <span id="csYTDEMS">—</span> EMS</span>
+          </div>
         </div>
+      </div>
+      <div class="call-chart-legend">
+        <span class="split-fire">■ Fire</span>
+        <span class="split-ems">■ EMS</span>
       </div>
       <div class="call-chart" id="callChart"></div>
       <p class="call-stats-updated" id="csUpdated"></p>
@@ -989,8 +1031,12 @@
 
           document.getElementById('csMonth').textContent = data.month.total.toLocaleString();
           document.getElementById('csMonthLabel').textContent = data.month_label;
+          document.getElementById('csMonthFire').textContent = data.month.fire.toLocaleString();
+          document.getElementById('csMonthEMS').textContent = data.month.ems.toLocaleString();
           document.getElementById('csYTD').textContent = data.ytd.total.toLocaleString();
           document.getElementById('csYTDLabel').textContent = data.year + ' Year to Date';
+          document.getElementById('csYTDFire').textContent = data.ytd.fire.toLocaleString();
+          document.getElementById('csYTDEMS').textContent = data.ytd.ems.toLocaleString();
 
           const months = data.monthly || [];
           const maxTotal = Math.max(1, ...months.map(m => m.total));
@@ -1001,7 +1047,10 @@
             return `
               <div class="call-bar-col">
                 <span class="call-bar-val">${m.total}</span>
-                <div class="call-bar" style="height:${pct}%;"></div>
+                <div class="call-bar-stack" style="height:${pct}%;">
+                  <div class="call-bar-seg-ems" style="flex-grow:${m.ems || 0};" title="${m.ems} EMS"></div>
+                  <div class="call-bar-seg-fire" style="flex-grow:${m.fire || 0};" title="${m.fire} Fire"></div>
+                </div>
                 <span class="call-bar-label">${abbr}</span>
               </div>`;
           }).join('');
