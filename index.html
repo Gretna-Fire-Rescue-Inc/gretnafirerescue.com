@@ -590,6 +590,138 @@
     .newsletter-msg.is-error { color: #2b0a0a; background: rgba(0,0,0,0.15); padding: 8px 12px; border-radius: var(--radius); }
     .newsletter-msg.is-success { color: var(--white); }
 
+    .newsletter-sms {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 0.7rem;
+      cursor: pointer;
+    }
+    .newsletter-sms input[type="checkbox"] {
+      margin-top: 3px;
+      flex-shrink: 0;
+      width: 15px;
+      height: 15px;
+      accent-color: var(--ink);
+    }
+    .newsletter-sms span {
+      font-size: 0.76rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .newsletter-legal {
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.65rem;
+    }
+    .newsletter-legal button {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      color: var(--white);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .newsletter-legal button:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── LEGAL MODAL ── */
+    .legal-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .legal-modal-overlay.is-open { display: flex; }
+
+    .legal-modal {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      max-width: 640px;
+      width: 100%;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .legal-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .legal-modal-head h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .legal-modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .legal-modal-close:hover { color: var(--white); }
+
+    .legal-modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      color: var(--ash);
+      font-size: 0.86rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .legal-modal-body h4 {
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 1.4rem 0 0.6rem;
+    }
+    .legal-modal-body h4:first-child { margin-top: 0; }
+    .legal-modal-body p { margin-bottom: 0.9rem; }
+    .legal-modal-body ul { list-style: none; margin-bottom: 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .legal-modal-body ul li { padding-left: 1.1rem; position: relative; }
+    .legal-modal-body ul li::before { content: '›'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+    .legal-modal-body strong { color: var(--white); font-weight: 600; }
+    .legal-modal-body a { color: var(--red); text-decoration: underline; }
+    .legal-modal-body a:hover { color: var(--white); }
+
+    .legal-modal-foot {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      text-align: right;
+    }
+    .legal-modal-foot a {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .legal-modal-foot a:hover { color: var(--white); }
+
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
@@ -913,11 +1045,86 @@
           <div class="newsletter-fields">
             <input type="text" name="first_name" placeholder="First Name" class="newsletter-input">
             <input type="email" name="email" placeholder="Email Address" required class="newsletter-input">
+            <input type="tel" name="phone" placeholder="Phone (optional)" class="newsletter-input">
             <button type="submit" class="newsletter-submit">Subscribe</button>
           </div>
+          <label class="newsletter-sms">
+            <input type="checkbox" name="sms_opt_in" value="1">
+            <span>Also send me text alerts at the phone number above (department news, events, and alerts). Msg &amp; data rates may apply, message frequency varies. Reply STOP to unsubscribe at any time. This is separate from the email newsletter above.</span>
+          </label>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAEOfEca8ULnBfgIe" data-action="newsletter_signup"></div>
+          <p class="newsletter-legal">By subscribing, you agree to our <button type="button" data-legal-open="privacy">Privacy Policy</button> and <button type="button" data-legal-open="terms">Terms &amp; Conditions</button>.</p>
           <p class="newsletter-msg" id="newsletterMsg" style="display:none;"></p>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGAL MODALS -->
+  <div class="legal-modal-overlay" id="legalModalOverlay">
+    <div class="legal-modal" role="dialog" aria-modal="true">
+      <div class="legal-modal-head">
+        <h3 id="legalModalTitle">Privacy Policy</h3>
+        <button type="button" class="legal-modal-close" id="legalModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="legal-modal-body" id="legalModalBody">
+
+        <div data-legal-panel="privacy">
+          <h4>Overview</h4>
+          <p>Gretna Fire & Rescue ("GFR," "we," "us," or "our") respects your privacy. This policy explains what information we collect through our newsletter and text alert signup, how we use it, and your choices.</p>
+
+          <h4>Information We Collect</h4>
+          <ul>
+            <li>Your first and last name (optional)</li>
+            <li>Your email address (required for the newsletter)</li>
+            <li>Your mobile phone number (only if you opt in to text alerts)</li>
+          </ul>
+
+          <h4>How We Use It</h4>
+          <ul>
+            <li>Send our email newsletter, if you subscribed</li>
+            <li>Send SMS/text alerts, <strong>only</strong> if you separately checked the text alert box</li>
+            <li>Confirm your subscription via a double opt-in email</li>
+          </ul>
+          <p>We never sell or rent your name, email, or phone number to third parties.</p>
+
+          <h4>Text Message (SMS) Program</h4>
+          <p>Consent to receive texts is <strong>separate</strong> from consent to receive our email newsletter — checking one box does not opt you into the other. If you opt in to texts: message frequency varies, message and data rates may apply, reply <strong>STOP</strong> at any time to opt out, and consent is never a condition of any purchase or service.</p>
+
+          <h4>Cookies & Tracking</h4>
+          <p>Our public website does not use tracking cookies or third-party analytics.</p>
+
+          <h4>Your Choices</h4>
+          <p>Unsubscribe from email via the link in any newsletter, or from texts by replying STOP. To request deletion of your information, email <a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a>.</p>
+        </div>
+
+        <div data-legal-panel="terms" style="display:none;">
+          <p><strong>This website, our newsletter, and our text alert program are not monitored for emergencies. Always call 9-1-1 for emergencies.</strong></p>
+
+          <h4>Acceptance of Terms</h4>
+          <p>By signing up for our email newsletter or text alert program, you agree to these terms.</p>
+
+          <h4>Newsletter & Text Message (SMS) Program</h4>
+          <p><strong>Email Newsletter:</strong> double opt-in via confirmation email; unsubscribe anytime via the link in any email.</p>
+          <p><strong>SMS/Text Alerts:</strong> a separate, optional program requiring its own opt-in. By opting in, you agree:</p>
+          <ul>
+            <li>You'll receive recurring, automated texts about department news, events, and alerts</li>
+            <li>Message frequency varies; message and data rates may apply</li>
+            <li>Text <strong>STOP</strong> at any time to cancel, or <strong>HELP</strong> for help</li>
+            <li>Consent is not required as a condition of any purchase or service</li>
+            <li>Not all carriers are supported; carriers aren't liable for delayed/undelivered messages</li>
+          </ul>
+
+          <h4>Limitation of Liability & Governing Law</h4>
+          <p>The website and our communications are provided "as is." These terms are governed by the laws of the Commonwealth of Virginia.</p>
+
+          <h4>Contact Us</h4>
+          <p><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a> &bull; <a href="tel:4346562621">(434) 656-2621</a></p>
+        </div>
+
+      </div>
+      <div class="legal-modal-foot">
+        <a href="privacy.html" id="legalModalFullLink" target="_blank" rel="noopener">View Full Policy ↗</a>
       </div>
     </div>
   </div>
@@ -961,7 +1168,7 @@
       </div>
       <div class="divider"></div>
       <div class="footer-bottom" style="margin-top: 1.75rem;">
-        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557 · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms & Conditions</a></p>
         <p class="footer-motto">Faith In God · Trust In Training</p>
       </div>
     </div>
@@ -1004,6 +1211,39 @@
             if (window.turnstile) window.turnstile.reset();
           });
       });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('legalModalOverlay');
+      if (!overlay) return;
+      const titleEl = document.getElementById('legalModalTitle');
+      const fullLink = document.getElementById('legalModalFullLink');
+      const panels = overlay.querySelectorAll('[data-legal-panel]');
+      const titles = { privacy: 'Privacy Policy', terms: 'Terms & Conditions' };
+      const pages = { privacy: 'privacy.html', terms: 'terms.html' };
+
+      function openModal(which) {
+        panels.forEach(p => { p.style.display = (p.dataset.legalPanel === which) ? '' : 'none'; });
+        titleEl.textContent = titles[which] || 'Privacy Policy';
+        fullLink.href = pages[which] || 'privacy.html';
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-legal-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () { openModal(btn.dataset.legalOpen); });
+      });
+
+      document.getElementById('legalModalClose').addEventListener('click', closeModal);
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     })();
   </script>
 
