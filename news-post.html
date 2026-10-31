@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="News and announcements from Gretna Fire & Rescue — Station 22, Gretna, Virginia.">
+  <title>News | Gretna Fire & Rescue</title>
+  <!-- Open Graph / social share preview -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://gretnafirerescue.com/news-post.html">
+  <meta property="og:site_name" content="Gretna Fire & Rescue">
+  <meta property="og:title" content="News | Gretna Fire &amp; Rescue">
+  <meta property="og:description" content="News and announcements from Gretna Fire &amp; Rescue — Station 22, Gretna, Virginia.">
+  <meta property="og:image" content="https://gretnafirerescue.com/images/banner.png">
+  <meta property="og:image:width" content="2172">
+  <meta property="og:image:height" content="724">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="News | Gretna Fire &amp; Rescue">
+  <meta name="twitter:description" content="News and announcements from Gretna Fire &amp; Rescue — Station 22, Gretna, Virginia.">
+  <meta name="twitter:image" content="https://gretnafirerescue.com/images/banner.png">
+  <link rel="icon" type="image/png" href="images/patch.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      background: var(--ink);
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, var(--ink) 50%, rgba(191,27,35,0.08) 100%);
+    }
+
+    .page-hero-inner {
+      padding: 3.5rem 0 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .breadcrumb span { color: var(--ash); }
+
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+      max-width: 820px;
+    }
+
+    .page-hero-meta {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    /* ── ARTICLE ── */
+    .article-section {
+      background: var(--black);
+      padding: 3rem 0 5rem;
+    }
+
+    .article-body {
+      max-width: 780px;
+      color: var(--ash);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin: 2rem 0 0.8rem;
+    }
+    .article-body h1:first-child, .article-body h2:first-child, .article-body h3:first-child { margin-top: 0; }
+    .article-body p { margin-bottom: 1.1rem; }
+    .article-body ul, .article-body ol { margin: 0 0 1.1rem 1.3rem; }
+    .article-body li { margin-bottom: 0.4rem; }
+    .article-body a { color: var(--red); text-decoration: underline; }
+    .article-body a:hover { color: var(--white); }
+    .article-body strong { color: var(--white); font-weight: 600; }
+    .article-body img { max-width: 100%; border-radius: var(--radius); margin: 1rem 0; display: block; }
+
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2rem;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .article-back:hover { color: var(--white); }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled">
+    <a href="index.html" class="nav-brand">
+      <img src="images/patch.png" alt="GFR Patch" class="nav-patch">
+      <div class="nav-wordmark">
+        <span class="nav-wordmark-top">Station 22 · Gretna, VA</span>
+        <span class="nav-wordmark-main">Gretna <em>Fire</em> & Rescue</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apparatus.html">Apparatus</a></li>
+      <li><a href="events.html" class="active">News & Events</a></li>
+      <li><a href="recruitment.html">Join Us</a></li>
+      <li><a href="donations.html">Donate</a></li>
+      <li><a href="rental.html">Building Rental</a></li>
+      <li><a href="standby.html">EMS Standbys</a></li>
+      <li><a href="https://portal.gretnafirerescue.com/store.php" target="_blank" rel="noopener">Merch Store ↗</a></li>
+    </ul>
+    <a href="https://portal.gretnafirerescue.com" class="nav-portal" target="_blank" rel="noopener">Member Portal ↗</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="apparatus.html">Apparatus</a>
+    <a href="events.html">News & Events</a>
+    <a href="recruitment.html">Join Us</a>
+    <a href="donations.html">Donate</a>
+    <a href="rental.html">Building Rental</a>
+    <a href="standby.html">EMS Standbys</a>
+    <a href="https://portal.gretnafirerescue.com/store.php" target="_blank">Merch Store ↗</a>
+    <a href="https://portal.gretnafirerescue.com" target="_blank">Member Portal ↗</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="page-hero-inner">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <a href="events.html">Events &amp; News</a>
+          <span>›</span>
+          <span>Article</span>
+        </div>
+        <h1 class="page-hero-title" data-news-post-title>Loading…</h1>
+        <p class="page-hero-meta" data-news-post-meta></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <div class="article-section">
+    <div class="container">
+      <a href="events.html" class="article-back">← Back to Events &amp; News</a>
+      <div data-news-post>
+        <p style="padding:2.5rem 0; color:var(--muted); font-size:0.9rem;">Loading article…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/patch.png" alt="Gretna Fire & Rescue" class="footer-brand-patch">
+          <div class="footer-brand-name">Gretna <em>Fire</em> & Rescue</div>
+          <p>Proudly serving the community of Gretna, Virginia and Station 22 since 1935. A combination volunteer and career department committed to protecting lives and property.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="apparatus.html">Apparatus</a></li>
+            <li><a href="events.html">Events & News</a></li>
+            <li><a href="recruitment.html">Join Our Team</a></li>
+            <li><a href="donations.html">Donate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="standby.html">EMS Standbys</a></li>
+            <li><a href="rental.html">Building Rental</a></li>
+            <li><a href="https://portal.gretnafirerescue.com/store.php" target="_blank" rel="noopener">Merch Store ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:911">Emergency: 9-1-1</a></li>
+            <li><a href="tel:4346562621">Non-Emergency: (434) 656-2621</a></li>
+            <li><a href="mailto:info@gretnafirerescue.com">info@gretnafirerescue.com</a></li>
+            <li><a href="https://maps.google.com/?q=122+East+Gretna+Road,+Gretna,+VA+24557" target="_blank" rel="noopener">122 E Gretna Rd, Gretna, VA 24557</a></li>
+            <li><a href="https://portal.gretnafirerescue.com" target="_blank" rel="noopener">Member Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="footer-bottom" style="margin-top: 1.75rem;">
+        <p>© 2026 Gretna Fire & Rescue · Station 22 · Gretna, Virginia 24557</p>
+        <p class="footer-motto">Faith In God · Trust In Training</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+  <script src="js/content.js"></script>
+</body>
+</html>
